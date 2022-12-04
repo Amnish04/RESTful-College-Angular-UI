@@ -1,1 +1,53 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Nerko+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arima:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+::selection {
+    background-color: #ef2f7c;
+    color: white;
+}
+
+body {
+    font-family: 'Arima', 'Times New Roman', Times, serif, cursive;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Bree Serif', serif;
+    font-weight: bold;
+}
+
+.fancy-font {
+    font-family: 'Nerko One', 'cursive';
+}
+
+.container-80 {
+    width: 80%;
+    margin: auto;
+}
+
+.container-90 {
+    width: 90%;
+    margin: auto;
+}
+
+@media screen and (max-width: 500px) {
+    .text-6xl {
+        font-size: 3rem;
+    }
+
+    .text-3xl {
+        font-size: 1.5rem;
+    }
+
+    .border-mobile {
+        border: 1px solid grey;
+    }
+}

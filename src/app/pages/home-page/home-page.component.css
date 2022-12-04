@@ -1,0 +1,51 @@
+@media screen and (max-width: 390px) {
+    #buttonContainer {
+        gap: 2.5em;
+    }
+}
+
+#homePageLeftButton,
+#homePageLeftButton {
+    transition: 100ms ease-in-out;
+}
+
+#homePageLeftButton:hover,
+#homePageLeftButton:focus,
+#homePageRightButton:focus,
+#homePageRightButton:hover {
+    scale: 1.1;
+    box-shadow: 0 3px 4px rgb(0,0,0,0.5);
+}
+
+.welcome-page {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    /* animation: background-flow 2s ease-in-out 0s infinite; */
+}
+
+.welcome-page::before {
+    background-image: var(--background-gradient);
+    position: absolute;
+    content: '';
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+}
+
+a[mat-button] {
+    padding: 2.5rem;
+}
+
+@keyframes background-flow {
+    0% {
+        background: linear-gradient(to right, white, pink);
+    }
+    100% {
+        background: linear-gradient(to right, pink, white);
+    }
+}
