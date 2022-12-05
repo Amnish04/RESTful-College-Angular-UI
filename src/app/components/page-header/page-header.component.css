@@ -1,0 +1,9 @@
+.m-4 {
+    margin: 2rem;
+}
+
+@media screen and (max-width: 800px) {
+    .sm-m-auto {
+        margin: 0 auto 1rem auto;
+    }    
+}

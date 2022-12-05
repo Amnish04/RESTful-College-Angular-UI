@@ -1,0 +1,9 @@
+<header class="border bg-slate-100">
+    <div class="flex flex-wrap justify-between sm:justify-between">
+        <h1 class="fancy-font text-6xl font-bold m-5 text-center md:text-left">{{title}}</h1>
+
+        <button *ngIf="goBackButton" mat-raised-button color="primary" class="m-4 sm-m-auto" style="padding: 0.5em; font-size: 1.25em; transition: 200ms ease-in-out; align-self: center;"
+        (click)="goBack()"
+        >Go Back</button>
+    </div>
+</header>

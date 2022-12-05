@@ -1,3 +1,4 @@
+import { StudentService } from './../../services/students/student-service.service';
 import { Component, OnInit, ViewChild, ElementRef, Renderer2 } from '@angular/core';
 
 @Component({
@@ -12,14 +13,15 @@ export class HomePageComponent implements OnInit {
     backgroundGradient: string = 'linear-gradient(to right, pink, white)';
 
     constructor(
-        private renderer: Renderer2
+        private studentService: StudentService
     ) { }
 
     @ViewChild('welcomePage') welcomePage: ElementRef<HTMLDivElement>;
     @ViewChild('leftButton', { read: ElementRef }) leftButton: ElementRef<HTMLAnchorElement>;
     @ViewChild('rightButton', { read: ElementRef }) rightButton: ElementRef<HTMLAnchorElement>;
 
-    ngOnInit(): void {   
+    ngOnInit(): void {
+        this.studentService.getStudents();
     }
     
     onLeftButtonHover() {

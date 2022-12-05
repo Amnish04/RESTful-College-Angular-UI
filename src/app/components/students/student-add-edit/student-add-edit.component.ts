@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { PageHeaderComponent } from './../../page-header/page-header.component';
+import { StudentService } from './../../../services/students/student-service.service';
+import { ActivatedRoute } from '@angular/router';
+import { Student } from './../../../models/student.model';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-student-add-edit',
@@ -6,10 +10,32 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./student-add-edit.component.css']
 })
 export class StudentAddEditComponent implements OnInit {
+    isEdit: boolean;
 
-  constructor() { }
+    get pageTitle(): string {
+        return  this.isEdit ? `Edit Student: ${this.student?.studentNum ?? ''}` : 'Add Student';
+    }
 
-  ngOnInit(): void {
-  }
+    @Input('student') student: Student | undefined;
+
+    constructor(private activatedRoute: ActivatedRoute,
+        private studentService: StudentService) { }
+
+    ngOnInit(): void {
+        this.activatedRoute.queryParams.subscribe(params => {
+            this.isEdit = params['mode'] === 'edit';
+        });
+        this.getStudentInfo(
+            Number(this.activatedRoute.snapshot.params['id'])
+        );
+    }
+
+    getStudentInfo(id: number): void {
+        this.student = this.studentService.cachedStudents?.find(std => std.studentNum === id);
+    }
+
+    get stringifiedStudent() {
+        return JSON.stringify(this.student);
+    }
 
 }

@@ -1,3 +1,5 @@
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { StudentService } from './services/students/student-service.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -16,6 +18,7 @@ import { StudentsTableComponent } from './components/students/students-table/stu
 import { MatTableModule } from '@angular/material/table';
 import { ClickOnKeyDirective } from './directives/click-on-key.directive';
 import { StudentAddEditComponent } from './components/students/student-add-edit/student-add-edit.component';
+import { PageHeaderComponent } from './components/page-header/page-header.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +31,7 @@ import { StudentAddEditComponent } from './components/students/student-add-edit/
     StudentsTableComponent,
     ClickOnKeyDirective,
     StudentAddEditComponent,
+    PageHeaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,9 +40,12 @@ import { StudentAddEditComponent } from './components/students/student-add-edit/
     MatButtonModule,
     AppRoutingModule,
     MatIconModule,
-    MatTableModule
+    MatTableModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    StudentService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

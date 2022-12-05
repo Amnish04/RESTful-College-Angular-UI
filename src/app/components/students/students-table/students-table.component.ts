@@ -1,8 +1,10 @@
+import { StudentService } from './../../../services/students/student-service.service';
 import { SortTypes } from './../../../utilities/enums';
 import { TableColumns } from './../../../models/tabel.model';
 import { Student } from './../../../models/student.model';
 import { Component, OnInit } from '@angular/core';
-import { getObjectValues } from 'src/app/utilities/utility-functions';
+import { getObjectValues, isDefNotNull } from 'src/app/utilities/utility-functions';
+import { pluck } from 'rxjs';
 
 @Component({
   selector: 'app-students-table',
@@ -21,13 +23,24 @@ export class StudentsTableComponent implements OnInit {
         {title: 'Course ID', field: 'courseId', sortable: true, sorted: null}, 
     ];
 
-    studentData = [
-        {"studentNum":2,"firstName":"Chandan","lastName":"Sharma","email":"chandan.sharma@abc.ca","addressStreet":null,"addressCity":null,"addressProvince":null,"TA":false,"status":"Full Time","course":2},
-        {"studentNum":1,"firstName":"Amnish","lastName":"Singh Arora","email":"amnishsingh04@gmail.com","addressStreet":"29 Noble Oaks Rd","addressCity":"Brampton","addressProvince":"Ontario","TA":null,"status":"Full Time","course":1}
-    ].map(std => this.formatStudentData(std));
+    studentData: any;
+
+    constructor(private studentService: StudentService) {}
 
     ngOnInit(): void {
+        this.getStudentData();
+    }
 
+    getStudentData() {
+        if (this.studentService.dataChanged || this.studentService.cachedStudents === undefined) { // If data is not cached or not the latest
+            this.studentService.getStudents()
+            .pipe(pluck('data'))
+            .subscribe(data => {
+                this.studentData = (data as any).map((std: any) => this.formatStudentData(std)); // Formatting data appropriately (for table coldefs) is important
+            });
+        } else {
+            this.studentData = this.studentService.cachedStudents.map((std: any) => this.formatStudentData(std));
+        }
     }
 
     formatStudentData(data: Student) {
@@ -43,10 +56,6 @@ export class StudentsTableComponent implements OnInit {
 
     // To be used in template
     getObjectValues = getObjectValues;
-
-    openStudent(e: any) {
-        console.log(e);
-    }
 
     sortColumnByField(fieldName: string) {
         let column = this.colDefs.find(col => col.field === fieldName);
