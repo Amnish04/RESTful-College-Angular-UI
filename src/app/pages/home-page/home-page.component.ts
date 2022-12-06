@@ -21,7 +21,7 @@ export class HomePageComponent implements OnInit {
     @ViewChild('rightButton', { read: ElementRef }) rightButton: ElementRef<HTMLAnchorElement>;
 
     ngOnInit(): void {
-        this.studentService.getStudents();
+        
     }
     
     onLeftButtonHover() {

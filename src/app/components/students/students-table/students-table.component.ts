@@ -2,16 +2,15 @@ import { StudentService } from './../../../services/students/student-service.ser
 import { SortTypes } from './../../../utilities/enums';
 import { TableColumns } from './../../../models/tabel.model';
 import { Student } from './../../../models/student.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, Input, SimpleChanges } from '@angular/core';
 import { getObjectValues, isDefNotNull } from 'src/app/utilities/utility-functions';
-import { pluck } from 'rxjs';
 
 @Component({
   selector: 'app-students-table',
   templateUrl: './students-table.component.html',
   styleUrls: ['./students-table.component.css'],
 })
-export class StudentsTableComponent implements OnInit {
+export class StudentsTableComponent implements OnInit, OnChanges {
     tableTitle: string = 'Students Data';
 
     colDefs: TableColumns = [
@@ -23,23 +22,16 @@ export class StudentsTableComponent implements OnInit {
         {title: 'Course ID', field: 'courseId', sortable: true, sorted: null}, 
     ];
 
-    studentData: any;
+    @Input('studentData') studentData: any;
 
-    constructor(private studentService: StudentService) {}
+    constructor() {}
 
     ngOnInit(): void {
-        this.getStudentData();
     }
 
-    getStudentData() {
-        if (this.studentService.dataChanged || this.studentService.cachedStudents === undefined) { // If data is not cached or not the latest
-            this.studentService.getStudents()
-            .pipe(pluck('data'))
-            .subscribe(data => {
-                this.studentData = (data as any).map((std: any) => this.formatStudentData(std)); // Formatting data appropriately (for table coldefs) is important
-            });
-        } else {
-            this.studentData = this.studentService.cachedStudents.map((std: any) => this.formatStudentData(std));
+    ngOnChanges(changes: SimpleChanges): void {
+        if (changes['studentData'] && isDefNotNull(this.studentData)) {
+            this.studentData = this.studentData.map((student: Student) => this.formatStudentData(student));
         }
     }
 

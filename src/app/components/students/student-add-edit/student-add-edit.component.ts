@@ -16,7 +16,7 @@ export class StudentAddEditComponent implements OnInit {
         return  this.isEdit ? `Edit Student: ${this.student?.studentNum ?? ''}` : 'Add Student';
     }
 
-    @Input('student') student: Student | undefined;
+    student: Student | undefined;
 
     constructor(private activatedRoute: ActivatedRoute,
         private studentService: StudentService) { }
@@ -29,9 +29,17 @@ export class StudentAddEditComponent implements OnInit {
             Number(this.activatedRoute.snapshot.params['id'])
         );
     }
-
+ 
     getStudentInfo(id: number): void {
-        this.student = this.studentService.cachedStudents?.find(std => std.studentNum === id);
+        if (this.studentService.cachedStudents) {
+            this.student = this.studentService.cachedStudents?.find(std => std.studentNum === id);
+        } else {
+            this.studentService.getStudents()
+            .subscribe(data => {
+                this.student = data.find(std => std.studentNum === id);
+            });
+        }
+        
     }
 
     get stringifiedStudent() {
