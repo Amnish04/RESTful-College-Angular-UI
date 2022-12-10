@@ -10,6 +10,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class PageHeaderComponent implements OnInit {
     @Input('goBackButton') goBackButton: boolean;
     @Input('title') title = '';
+    @Input('fancy') fancyFont: boolean = false;
 
     constructor(private location: Location) { }
 

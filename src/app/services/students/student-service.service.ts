@@ -1,6 +1,6 @@
 import { Students } from './../../models/student.model';
 import { Injectable } from '@angular/core';
-    import { map, Observable, of, pluck } from 'rxjs';
+    import { map, Observable, of, pluck, Subscription } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -8,21 +8,26 @@ import { HttpClient } from '@angular/common/http';
 })
 export class StudentService {
     dataChanged = true;
-    getStudentsRoute: string = 'https://api-restful-college.cyclic.app/students';
+    private endpoints = {
+        getStudentsRoute: 'https://api-restful-college.cyclic.app/students',
+    }
 
     constructor(private http: HttpClient) { }
 
-    private _cachedStudents: Students;
+    private _cachedStudents: Students = [];
 
+    // Read
     getStudents(): Observable<Students> {
-        let obs = this.http.get<any>(this.getStudentsRoute).pipe(
+        let obs = this.http.get<any>(this.endpoints.getStudentsRoute).pipe(
             map(x => x.data)
         );
-
+        
+        let subscription = new Subscription();
         if (this.dataChanged || !this._cachedStudents) {
             // Cache data
-            obs.subscribe(data => {
+            subscription = obs.subscribe(data => {
                 this._cachedStudents = data as Students;
+                subscription.unsubscribe();
             });
         }
 
@@ -42,4 +47,8 @@ export class StudentService {
         return this._cachedStudents;
     }
 
+    // Delete
+    deleteStudent(id: number): void {
+        console.log("Deleting Student " + id);
+    }
 }

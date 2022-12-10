@@ -19,6 +19,13 @@ import { MatTableModule } from '@angular/material/table';
 import { ClickOnKeyDirective } from './directives/click-on-key.directive';
 import { StudentAddEditComponent } from './components/students/student-add-edit/student-add-edit.component';
 import { PageHeaderComponent } from './components/page-header/page-header.component';
+import {MatInputModule} from '@angular/material/input';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatRadioModule} from '@angular/material/radio';
+import { MatSelectModule } from '@angular/material/select';
+import {MatDividerModule} from '@angular/material/divider';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -41,7 +48,14 @@ import { PageHeaderComponent } from './components/page-header/page-header.compon
     AppRoutingModule,
     MatIconModule,
     MatTableModule,
-    HttpClientModule
+    HttpClientModule,
+    MatInputModule,
+    MatCheckboxModule,
+    MatProgressSpinnerModule,
+    MatRadioModule,
+    MatSelectModule,
+    MatDividerModule,
+    FormsModule
   ],
   providers: [
     StudentService

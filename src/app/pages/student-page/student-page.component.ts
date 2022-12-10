@@ -1,7 +1,6 @@
 import { StudentService } from './../../services/students/student-service.service';
 import { Component, OnInit } from '@angular/core';
 import { Students } from 'src/app/models/student.model';
-import { map } from 'rxjs';
 
 @Component({
   selector: 'app-student-page',

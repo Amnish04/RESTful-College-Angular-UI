@@ -1,5 +1,125 @@
-<app-page-header title="{{pageTitle}}" [goBackButton]="true"></app-page-header>
+<app-page-header [fancy]="true" title="{{pageTitle}}" [goBackButton]="true"></app-page-header>
 
-<div class="container-90 mt-8">
-    {{stringifiedStudent}}
+<div class="container-90">
+
+    <form >
+
+        <ng-container *ngIf="!editing && isEdit">
+            <div class="flex justify-around sm:justify-start sm:gap-10 mt-5 sm:mt-10">
+                <button type="button" mat-raised-button color="primary" class="m-4 sm-m-auto" 
+                style="padding: 0.5em; font-size: 1.25em; transition: 200ms ease-in-out; align-self: center;"
+                (click)="editing = true" >
+                    Edit
+                </button>
+                <button type="button" mat-raised-button color="primary" class="m-4 sm-m-auto" 
+                style="padding: 0.5em; font-size: 1.25em; transition: 200ms ease-in-out; align-self: center;"
+                (click)="onDelete()">
+                    Delete
+                </button>
+            </div>
+        </ng-container>
+
+        <div class="student-grid mt-10 sm:mt-20">
+            <!-- First Name -->
+            <mat-form-field [ngClass]="{'bg-slate-100 p-2 rounded-lg': isEdit && !editing}" class="grid-child">
+                <mat-label>First Name</mat-label>
+                <input [readonly]="isEdit && !editing" type="text" matInput placeholder="First Name"  [(ngModel)]="student.firstName" [ngModelOptions]="{standalone: true}" [value]="isEdit ? student.firstName : ''">
+            </mat-form-field>
+            <!-- <div class="">
+                <label for="firstNameInput">First Name</label> <br>
+                <input class="border" id="firstNameInput" type="text" [value]="isEdit ? student?.firstName ?? '' : ''">
+            </div> -->
+            
+            <!-- Last Name -->
+            <mat-form-field class="grid-child" [ngClass]="{'bg-slate-100 p-2 rounded-lg': isEdit && !editing}">
+                <mat-label>Last Name</mat-label>
+                <input [readonly]="isEdit && !editing" type="text" matInput placeholder="Last Name" [value]="isEdit ? student.lastName : ''">
+            </mat-form-field>
+    
+            <!-- Email -->
+            <mat-form-field class="grid-child" [ngClass]="{'bg-slate-100 p-1 rounded-lg': isEdit && !editing}">
+                <mat-label>Email</mat-label>
+                <input [readonly]="isEdit && !editing" type="email"matInput type="email" placeholder="Email" [value]="isEdit ? student.email : ''">
+            </mat-form-field>
+    
+            <!-- Street Address -->
+            <mat-form-field class="grid-child" [ngClass]="{'bg-slate-100 p-2 rounded-lg': isEdit && !editing}">
+                <mat-label>Street Address</mat-label>
+                <input [readonly]="isEdit && !editing" type="text" matInput placeholder="Street Address" [value]="isEdit ? student.addressStreet : ''">
+            </mat-form-field>
+    
+            <!-- City -->
+            <mat-form-field class="grid-child" [ngClass]="{'bg-slate-100 p-2 rounded-lg': isEdit && !editing}">
+                <mat-label>City</mat-label>
+                <input [readonly]="isEdit && !editing" type="text" matInput placeholder="City" [value]="isEdit ? student.addressCity : ''">
+            </mat-form-field>
+    
+            <!-- Province -->
+            <mat-form-field class="grid-child" [ngClass]="{'bg-slate-100 p-2 rounded-lg': isEdit && !editing}">
+                <mat-label>Province</mat-label>
+                <input [readonly]="isEdit && !editing" type="text" matInput placeholder="Province" [value]="isEdit ? student.addressProvince : ''">
+            </mat-form-field>
+    
+            <!-- TA -->
+            <mat-checkbox [draggable]="true" [color]="'primary'" class="grid-child" [ngClass]="{'bg-slate-100 p-5 rounded-lg': isEdit && !editing}"
+            [checked]="isEdit ? student.TA ?? false : false"  [disabled]="isEdit && !editing">College Employment</mat-checkbox>
+            <!-- <div class="grid-child">
+                <label for="TAInput">College Employment</label> <br>
+                <input class="border" id="TAInput" type="checkbox" [checked]="isEdit ? student?.TA ?? false : false"> <span class="mx-3">Teaching Assistant</span>
+            </div> -->
+    
+            <!-- Enrolment -->
+            <div class="grid-child" [ngClass]="{'bg-slate-100 p-1 rounded-lg': isEdit && !editing}">
+
+                <label id="status-radio-group-label">Pick your favorite season</label>
+                <br>
+                <mat-radio-group [color]="'primary'" [disabled]="isEdit && !editing"
+                aria-labelledby="status-radio-group-label">
+                    <mat-radio-button  class="m-2" [value]="'Part Time'" [checked]="isEdit ? student.status === 'Part Time' : false">
+                        Part Time
+                    </mat-radio-button>
+                    <mat-radio-button class="m-2" [value]="'Full Time'" [checked]="isEdit ? student.status === 'Full Time' : false">
+                        Full Time
+                    </mat-radio-button>
+                </mat-radio-group>
+
+                <!-- <label for="enrolmentInput">Enrolment Status</label> <br>
+    
+                <span class="mx-1">Full Time</span>
+                <input [tabIndex]="0" class="border mx-1" id="enrolmentInput" name="enrolment" type="radio" value="Part Time" [checked]="isEdit ? student?.status === 'Full Time' : false">
+    
+                <span class="mx-1">Part Time</span>
+                <input [tabIndex]="0" class="border mx-1" id="enrolmentInput" name="enrolment" type="radio" value="Part Time" [checked]="isEdit ? student?.status === 'Part Time' : false"> -->
+    
+            </div>
+    
+            <!-- Course -->
+            <mat-form-field class="grid-child" color="primary" [ngClass]="{'bg-slate-100 p-2 rounded-lg': isEdit && !editing}">
+                <mat-label>Enrolled in Course</mat-label>
+                <mat-select [value]="student.course" [disabled]="isEdit && !editing">
+                    <mat-option *ngFor="let course of courses" [value]="course.courseId">
+                    {{course.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            
+        </div>
+
+        <!-- Action Buttons -->
+        <ng-container *ngIf="editing || !isEdit">
+            <div class="flex justify-around sm:justify-end sm:gap-10 mb-10">
+                <button type="button" mat-raised-button color="primary" class="m-4 sm-m-auto" 
+                style="padding: 0.5em; font-size: 1.25em; transition: 200ms ease-in-out; align-self: center;"
+                (click)="onCancelEdit()">
+                    Cancel
+                </button>
+                <button type="button" mat-raised-button color="primary" class="m-4 sm-m-auto" 
+                style="padding: 0.5em; font-size: 1.25em; transition: 200ms ease-in-out; align-self: center;"
+                (click)="onSaveClick()">
+                    Save
+                </button>
+            </div>
+        </ng-container>
+
+    </form>
 </div>
