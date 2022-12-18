@@ -37,6 +37,26 @@
     border-radius: 0.25em;
 }
 
+@media screen and (max-width: 1200px) {
+
+    /* TO BE DONE */
+    .student-grid {
+        grid-template-columns: 95%;
+        grid-template-rows: repeat(9, 100px);
+    }
+
+    .student-grid .grid-child:nth-child(1) { grid-area: 1 / 1 / span 1 / 1; }
+    .student-grid .grid-child:nth-child(2) { grid-area: 2 / 1 / span 1 / 1; }
+    .student-grid .grid-child:nth-child(3) { grid-area: 3 / 1 / span 1 / 1; }
+    .student-grid .grid-child:nth-child(4) { grid-area: 4 / 1 / span 1 / 1; }
+    .student-grid .grid-child:nth-child(5) { grid-area: 5 / 1 / span 1 / 1; }
+    .student-grid .grid-child:nth-child(6) { grid-area: 6 / 1 / span 1 / 1; }
+    .student-grid .grid-child:nth-child(7) { grid-area: 7 / 1 / span 1 / 1; }
+    .student-grid .grid-child:nth-child(8) { grid-area: 8 / 1 / span 1 / 1; }
+    .student-grid .grid-child:nth-child(9) { grid-area: 9 / 1 / span 1 / 1; }
+}
+
+
 /* Input Override */
 ::ng-deep .mat-form-field-label {
     /*change color of label*/
@@ -45,7 +65,7 @@
 
 ::ng-deep .mat-focused .mat-form-field-label {
     /*change color of label*/
-    color: palevioletred !important;
+    color: var(--color-accent) !important;
 }
 
 ::ng-deep.mat-form-field-underline {
@@ -66,11 +86,11 @@
     border-color: black;
 }
 ::ng-deep .mat-radio-button.mat-radio-disabled .mat-radio-label-content {
-    color: #000;
+    color: black;
 }
 ::ng-deep .mat-radio-button.mat-radio-disabled.mat-radio-checked .mat-radio-outer-circle, .mat-radio-button.mat-radio-disabled .mat-radio-outer-circle {
     border-color: rgba(40, 35, 35, 0.5);
-    background-color: palevioletred;
+    background-color: var(--color-accent);
 }
 
 /* Select Override */
@@ -81,21 +101,6 @@
     color: black;
 }
 
-@media screen and (max-width: 1200px) {
-
-    /* TO BE DONE */
-    .student-grid {
-        grid-template-columns: 95%;
-        grid-template-rows: repeat(9, 100px);
-    }
-
-    .student-grid .grid-child:nth-child(1) { grid-area: 1 / 1 / span 1 / 1; }
-    .student-grid .grid-child:nth-child(2) { grid-area: 2 / 1 / span 1 / 1; }
-    .student-grid .grid-child:nth-child(3) { grid-area: 3 / 1 / span 1 / 1; }
-    .student-grid .grid-child:nth-child(4) { grid-area: 4 / 1 / span 1 / 1; }
-    .student-grid .grid-child:nth-child(5) { grid-area: 5 / 1 / span 1 / 1; }
-    .student-grid .grid-child:nth-child(6) { grid-area: 6 / 1 / span 1 / 1; }
-    .student-grid .grid-child:nth-child(7) { grid-area: 7 / 1 / span 1 / 1; }
-    .student-grid .grid-child:nth-child(8) { grid-area: 8 / 1 / span 1 / 1; }
-    .student-grid .grid-child:nth-child(9) { grid-area: 9 / 1 / span 1 / 1; }
+::ng-deep .mat-flat-button.mat-primary.mat-button-disabled, .mat-flat-button.mat-accent.mat-button-disabled, .mat-flat-button.mat-warn.mat-button-disabled, .mat-flat-button.mat-button-disabled.mat-button-disabled, .mat-raised-button.mat-primary.mat-button-disabled, .mat-raised-button.mat-accent.mat-button-disabled, .mat-raised-button.mat-warn.mat-button-disabled, .mat-raised-button.mat-button-disabled.mat-button-disabled, .mat-fab.mat-primary.mat-button-disabled, .mat-fab.mat-accent.mat-button-disabled, .mat-fab.mat-warn.mat-button-disabled, .mat-fab.mat-button-disabled.mat-button-disabled, .mat-mini-fab.mat-primary.mat-button-disabled, .mat-mini-fab.mat-accent.mat-button-disabled, .mat-mini-fab.mat-warn.mat-button-disabled, .mat-mini-fab.mat-button-disabled.mat-button-disabled {
+    background-color: var(--color-accent);
 }

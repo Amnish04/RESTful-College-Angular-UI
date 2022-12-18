@@ -3,6 +3,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Arima:wght@400;500;600&display=swap');
 
+:root {
+    --color-accent: palevioletred;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
