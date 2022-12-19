@@ -43,6 +43,13 @@ h1, h2, h3, h4, h5, h6 {
     margin: auto;
 }
 
+/* Mat Dialog */
+mat-dialog-container {
+    background-color: white !important;
+    color: black !important;
+}
+
+/* Responsive */
 @media screen and (max-width: 500px) {
     .text-6xl {
         font-size: 3rem;

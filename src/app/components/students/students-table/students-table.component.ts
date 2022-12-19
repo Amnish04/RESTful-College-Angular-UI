@@ -40,7 +40,7 @@ export class StudentsTableComponent implements OnInit, OnChanges {
             studentNum: data.studentNum,
             name: data.firstName + " " + data.lastName,
             email: data.email,
-            address: `${data.addressStreet ?? ''} ${data.addressCity ?? ''} ${data.addressProvince ?? ''}`,
+            address: `${data.addressStreet ?? ''}, ${data.addressCity ?? ''}, ${data.addressProvince ?? ''}`,
             status: data.status,
             courseId: data.course
         };

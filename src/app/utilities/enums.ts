@@ -7,4 +7,5 @@ export enum ErrorTypes {
     Required = 'required',
     MaxLength = 'maxlength',
     MinLength = 'minlength',
+    Email = 'email',
 }

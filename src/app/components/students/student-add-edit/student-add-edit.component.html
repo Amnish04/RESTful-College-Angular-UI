@@ -41,7 +41,7 @@
                 <!-- Last Name -->
                 <mat-form-field class="grid-child" [ngClass]="{'bg-slate-100 p-2 rounded-lg': isEdit && !editing}">
                     <mat-label>Last Name</mat-label>
-                    <input [readonly]="isEdit && !editing" type="text" matInput placeholder="Last Name" [value]="isEdit ? student.lastName : ''" formControlName="lastName">
+                    <input [readonly]="isEdit && !editing" type="text" matInput placeholder="Last Name" formControlName="lastName">
 
                     <mat-error>
                         {{ studentForm.get('lastName')?.errors?.['required'] ? errorMessages.lastName.messageRequired
@@ -53,30 +53,60 @@
                 <!-- Email -->
                 <mat-form-field class="grid-child" [ngClass]="{'bg-slate-100 p-1 rounded-lg': isEdit && !editing}">
                     <mat-label>Email</mat-label>
-                    <input [readonly]="isEdit && !editing" type="email"matInput type="email" placeholder="Email" [value]="isEdit ? student.email : ''">
+                    <input [readonly]="isEdit && !editing" type="email"matInput type="email" placeholder="Email"
+                    formControlName="email">
+
+                    <mat-error>
+                        {{ studentForm.get('email')?.errors?.['required'] ? errorMessages.email.messageRequired
+                        : studentForm.get('email')?.errors?.['email'] ? errorMessages.email.messageEmail
+                        : null }}
+                    </mat-error>
                 </mat-form-field>
-        
-                <!-- Street Address -->
-                <mat-form-field class="grid-child" [ngClass]="{'bg-slate-100 p-2 rounded-lg': isEdit && !editing}">
-                    <mat-label>Street Address</mat-label>
-                    <input [readonly]="isEdit && !editing" type="text" matInput placeholder="Street Address" [value]="isEdit ? student.addressStreet : ''">
-                </mat-form-field>
-        
-                <!-- City -->
-                <mat-form-field class="grid-child" [ngClass]="{'bg-slate-100 p-2 rounded-lg': isEdit && !editing}">
-                    <mat-label>City</mat-label>
-                    <input [readonly]="isEdit && !editing" type="text" matInput placeholder="City" [value]="isEdit ? student.addressCity : ''">
-                </mat-form-field>
-        
-                <!-- Province -->
-                <mat-form-field class="grid-child" [ngClass]="{'bg-slate-100 p-2 rounded-lg': isEdit && !editing}">
-                    <mat-label>Province</mat-label>
-                    <input [readonly]="isEdit && !editing" type="text" matInput placeholder="Province" [value]="isEdit ? student.addressProvince : ''">
-                </mat-form-field>
+                
+                <ng-container formGroupName="address">
+                    <!-- Street Address -->
+                    <mat-form-field class="grid-child" [ngClass]="{'bg-slate-100 p-2 rounded-lg': isEdit && !editing}">
+                        <mat-label>Street Address</mat-label>
+                        <input [readonly]="isEdit && !editing" type="text" matInput 
+                            placeholder="Street Address" formControlName="street">
+
+                        <mat-error>
+                            {{ studentForm.get('address.street')?.errors?.['required'] ? errorMessages.address.street.messageRequired
+                            : studentForm.get('address.street')?.errors?.['maxlength'] ? errorMessages.address.street.messageLength
+                            : null }}
+                        </mat-error>
+                    </mat-form-field>
+            
+                    <!-- City -->
+                    <mat-form-field class="grid-child" [ngClass]="{'bg-slate-100 p-2 rounded-lg': isEdit && !editing}">
+                        <mat-label>City</mat-label>
+                        <input [readonly]="isEdit && !editing" type="text" matInput 
+                            placeholder="City" formControlName="city">
+
+                        <mat-error>
+                            {{ studentForm.get('address.city')?.errors?.['required'] ? errorMessages.address.city.messageRequired
+                            : studentForm.get('address.city')?.errors?.['maxlength'] ? errorMessages.address.city.messageLength
+                            : null }}
+                        </mat-error>
+                    </mat-form-field>
+            
+                    <!-- Province -->
+                    <mat-form-field class="grid-child" [ngClass]="{'bg-slate-100 p-2 rounded-lg': isEdit && !editing}">
+                        <mat-label>Province</mat-label>
+                        <input [readonly]="isEdit && !editing" type="text" matInput 
+                        placeholder="Province" formControlName="province">
+
+                        <mat-error>
+                            {{ studentForm.get('address.province')?.errors?.['required'] ? errorMessages.address.province.messageRequired
+                            : studentForm.get('address.province')?.errors?.['maxlength'] ? errorMessages.address.province.messageLength
+                            : null }}
+                        </mat-error>
+                    </mat-form-field>
+                </ng-container>
         
                 <!-- TA -->
-                <mat-checkbox [draggable]="true" [color]="'primary'" class="grid-child" [ngClass]="{'bg-slate-100 p-5 rounded-lg': isEdit && !editing}"
-                [checked]="isEdit ? student.TA ?? false : false"  [disabled]="isEdit && !editing">College Employment</mat-checkbox>
+                <mat-checkbox formControlName="TA" [draggable]="true" [color]="'primary'" class="grid-child" [ngClass]="{'bg-slate-100 p-5 rounded-lg': isEdit && !editing}"
+                [disabled]="isEdit && !editing">College Employment</mat-checkbox>
                 <!-- <div class="grid-child">
                     <label for="TAInput">College Employment</label> <br>
                     <input class="border" id="TAInput" type="checkbox" [checked]="isEdit ? student?.TA ?? false : false"> <span class="mx-3">Teaching Assistant</span>
@@ -87,12 +117,12 @@
 
                     <label id="status-radio-group-label">Pick your favorite season</label>
                     <br>
-                    <mat-radio-group [color]="'primary'" [disabled]="isEdit && !editing"
+                    <mat-radio-group formControlName="status" [color]="'primary'" [disabled]="isEdit && !editing"
                     aria-labelledby="status-radio-group-label">
-                        <mat-radio-button  class="m-2" [value]="'Part Time'" [checked]="isEdit ? student.status === 'Part Time' : false">
+                        <mat-radio-button  class="m-2" [value]="'Part Time'">
                             Part Time
                         </mat-radio-button>
-                        <mat-radio-button class="m-2" [value]="'Full Time'" [checked]="isEdit ? student.status === 'Full Time' : false">
+                        <mat-radio-button class="m-2" [value]="'Full Time'">
                             Full Time
                         </mat-radio-button>
                     </mat-radio-group>
@@ -110,9 +140,9 @@
                 <!-- Course -->
                 <mat-form-field class="grid-child" color="primary" [ngClass]="{'bg-slate-100 p-2 rounded-lg': isEdit && !editing}">
                     <mat-label>Enrolled in Course</mat-label>
-                    <mat-select [value]="student.course" [disabled]="isEdit && !editing">
+                    <mat-select [disabled]="isEdit && !editing" formControlName="course">
                         <mat-option *ngFor="let course of courses" [value]="course.courseId">
-                        {{course.name}}
+                            {{course.name}}
                         </mat-option>
                     </mat-select>
                 </mat-form-field>

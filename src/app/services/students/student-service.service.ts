@@ -1,4 +1,4 @@
-import { Students } from './../../models/student.model';
+import { Students, Student } from './../../models/student.model';
 import { Injectable } from '@angular/core';
     import { map, Observable, of, pluck, Subscription } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
@@ -8,8 +8,11 @@ import { HttpClient } from '@angular/common/http';
 })
 export class StudentService {
     dataChanged = true;
+    domain: string = 'https://api-restful-college.cyclic.app';
+
     private endpoints = {
-        getStudentsRoute: 'https://api-restful-college.cyclic.app/students',
+        getStudentsRoute: this.domain + '/students',
+        updateStudentRoute: this.domain + '/students',
     }
 
     constructor(private http: HttpClient) { }
@@ -47,8 +50,18 @@ export class StudentService {
         return this._cachedStudents;
     }
 
-    // Delete
-    deleteStudent(id: number): void {
-        console.log("Deleting Student " + id);
+    // Delete Student
+    deleteStudent(id: number) {
+        return this.http.delete(this.endpoints.updateStudentRoute + `/${id}`);
+    }
+
+    // Update Student
+    updateStudent(studentData: Student) {
+        return this.http.put(this.endpoints.updateStudentRoute, studentData);
+    }
+
+    // Add Student
+    addStudent(studentData: Student) {
+        return this.http.post(this.endpoints.getStudentsRoute, studentData);
     }
 }

@@ -26,6 +26,8 @@ import {MatRadioModule} from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import {MatDividerModule} from '@angular/material/divider';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { YesNoModalComponent } from './components/yes-no-modal/yes-no-modal.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ClickOnKeyDirective,
     StudentAddEditComponent,
     PageHeaderComponent,
+    YesNoModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,7 +59,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatSelectModule,
     MatDividerModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDialogModule
   ],
   providers: [
     StudentService

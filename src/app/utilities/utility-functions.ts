@@ -39,13 +39,16 @@ export function getErrorMessage(type: ErrorTypes, fieldName: string = 'Field', o
 
     switch(type) {
         case ErrorTypes.Required:
-            message = `${fieldName} is required!`
+            message = `${fieldName} is required!`;
             break;
         case ErrorTypes.MaxLength:
-            message = `${fieldName} cannot have more than ${options.maxlength} characters!`
+            message = `${fieldName} cannot have more than ${options.maxlength} characters!`;
             break;
-        case ErrorTypes.MinLength:
-            message = `${fieldName} cannot have less than ${options.minlength} required!`
+        case ErrorTypes.Email:
+            message = `${fieldName} is not in correct email format!`;
+            break;
+        default:
+            message = `Something is wrong with this field!`;
             break;
     }
 
