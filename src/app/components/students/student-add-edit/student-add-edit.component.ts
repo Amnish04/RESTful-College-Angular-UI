@@ -200,7 +200,11 @@ export class StudentAddEditComponent implements OnInit {
     }
 
     openDialog() {
-        const dialogRef = this.dialog.open(YesNoModalComponent);
+        const dialogRef = this.dialog.open(YesNoModalComponent, {
+            data: {
+                dialogTitle: 'Are you sure you want to delete?'
+            }
+        });
 
         return dialogRef.afterClosed();
     }
