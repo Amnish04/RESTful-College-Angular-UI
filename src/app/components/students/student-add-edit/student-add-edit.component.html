@@ -142,7 +142,7 @@
                     <mat-label>Enrolled in Course</mat-label>
                     <mat-select [disabled]="isEdit && !editing" formControlName="course">
                         <mat-option *ngFor="let course of courses" [value]="course.courseId">
-                            {{course.name}}
+                            {{course.courseCode}}
                         </mat-option>
                     </mat-select>
                 </mat-form-field>

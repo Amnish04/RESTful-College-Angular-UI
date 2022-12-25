@@ -1,3 +1,5 @@
+import { Course, Courses } from './../../../models/course.model';
+import { CourseService } from './../../../services/courses/course.service';
 import { YesNoModalComponent } from './../../yes-no-modal/yes-no-modal.component';
 import { Location } from '@angular/common';
 import { StudentService } from './../../../services/students/student-service.service';
@@ -27,10 +29,10 @@ export class StudentAddEditComponent implements OnInit {
     student: Student = new Student();
 
     // Hard coded for now
-    courses = [
-        { courseId: null, name: 'SelectCourse'},
-        { courseId: 1, name: 'OOP345'},
-        { courseId: 2, name: 'WEB322'},
+    courses: Courses = [
+        // { courseId: null, courseCode: 'SelectCourse'},
+        // { courseId: 1, courseCode: 'OOP345'},
+        // { courseId: 2, courseCode: 'WEB322'},
     ]; 
 
     errorMessages = {
@@ -67,13 +69,22 @@ export class StudentAddEditComponent implements OnInit {
         private location: Location,
         private formBuilder: FormBuilder,
         private dialog: MatDialog,
-        private router: Router) { }
+        private router: Router,
+        private courseService: CourseService) { }
 
     ngOnInit(): void {
         this.isEdit = this.activatedRoute.snapshot.queryParams['mode'] === 'edit';
 
         // Gets the student and intializes the form
         this.getStudent(true);
+        this.getCourses();
+    }
+
+    getCourses() {
+        this.courseService.getCourses()
+        .subscribe((data: Courses) => {
+            this.courses = data;
+        });
     }
 
     // To be called when student is fetched and initialized
