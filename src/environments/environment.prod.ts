@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  apiDomain: 'https://api-restful-college.cyclic.app'
 };

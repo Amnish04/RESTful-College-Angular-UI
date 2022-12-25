@@ -1,3 +1,4 @@
+import { environment } from './../../../environments/environment';
 import { Students, Student } from './../../models/student.model';
 import { Injectable } from '@angular/core';
     import { map, Observable, of, pluck, Subscription } from 'rxjs';
@@ -8,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class StudentService {
     dataChanged = true;
-    domain: string = 'https://api-restful-college.cyclic.app';
+    domain: string = environment.apiDomain;
 
     private endpoints = {
         getStudentsRoute: this.domain + '/students',
