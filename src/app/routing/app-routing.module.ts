@@ -1,3 +1,4 @@
+import { CourseAddEditComponent } from './../components/courses/course-add-edit/course-add-edit.component';
 import { StudentAddEditComponent } from './../components/students/student-add-edit/student-add-edit.component';
 import { CoursesPageComponent } from './../pages/courses-page/courses-page.component';
 import { StudentPageComponent } from './../pages/student-page/student-page.component';
@@ -11,6 +12,8 @@ const routes: Routes = [
     { path: 'students/:id', component: StudentAddEditComponent },
     { path: 'students/add-new', component: StudentAddEditComponent },
     { path: 'courses', component: CoursesPageComponent },
+    { path: 'courses/:id', component: CourseAddEditComponent },
+    { path: 'courses/add-new', component: CourseAddEditComponent },
     { path: '', component: HomePageComponent },
     { path: '**', component: ErrorPageComponent}
 ];

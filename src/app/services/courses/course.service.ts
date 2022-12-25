@@ -12,7 +12,7 @@ export class CourseService {
      * `dataChanged` needs to be operated very carefully as this decides if you recieve cached or new data from server,
      *  optimizes number of network requests
      */
-    dataChanged: boolean = true; // Only fetch new data when dataChanged is true
+     private dataChanged: boolean = true; // Only fetch new data when dataChanged is true
 
     domainName: string = environment.apiDomain;
     endpoints = {

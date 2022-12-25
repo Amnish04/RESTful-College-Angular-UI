@@ -29,6 +29,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { YesNoModalComponent } from './components/yes-no-modal/yes-no-modal.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { CoursesTableComponent } from './components/courses/courses-table/courses-table.component';
+import { CourseAddEditComponent } from './components/courses/course-add-edit/course-add-edit.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { CoursesTableComponent } from './components/courses/courses-table/course
     PageHeaderComponent,
     YesNoModalComponent,
     CoursesTableComponent,
+    CourseAddEditComponent,
   ],
   imports: [
     BrowserModule,
