@@ -1,1 +1,66 @@
-<p>course-add-edit works!</p>
+<app-page-header [fancy]="true" title="{{pageTitle}}" [goBackButton]="true"></app-page-header>
+
+<div class="container-90">
+
+    <ng-container *ngIf="courseForm">
+        <form [formGroup]="courseForm" (ngSubmit)="onSaveClick()">
+
+            <ng-container *ngIf="!editing && isEdit">
+                <div class="flex justify-around sm:justify-start sm:gap-10 mt-5 sm:mt-10">
+                    <button type="button" mat-raised-button color="primary" class="m-4 sm-m-auto" 
+                    style="padding: 0.5em; font-size: 1.25em; transition: 200ms ease-in-out; align-self: center;"
+                    (click)="editing = true" >
+                        Edit
+                    </button>
+                    <button type="button" mat-raised-button color="primary" class="m-4 sm-m-auto" 
+                    style="padding: 0.5em; font-size: 1.25em; transition: 200ms ease-in-out; align-self: center;"
+                    (click)="onDelete()">
+                        Delete
+                    </button>
+                </div>
+            </ng-container>
+
+            <div class="course-grid mt-10 sm:mt-20">
+                <!-- Course Code -->
+                <mat-form-field [ngClass]="{'bg-slate-100 p-2 rounded-lg': isEdit && !editing}" class="grid-child">
+                    <mat-label>Course Code</mat-label>
+                    <input [readonly]="isEdit && !editing" type="text" matInput placeholder="Enter course code"  
+                    formControlName="courseCode">
+                    
+                    <mat-error>
+                        {{ courseForm.get('courseCode')?.errors?.['required'] ? errorMessages.courseCode.messageRequired
+                        : courseForm.get('courseCode')?.errors?.['maxlength'] ? errorMessages.courseCode.messageLength
+                        : null }}
+                    </mat-error>
+                </mat-form-field>
+                
+                <!-- Course Description -->
+                <mat-form-field class="grid-child" [ngClass]="{'bg-slate-100 p-2 rounded-lg': isEdit && !editing}">
+                    <mat-label>Course Description</mat-label>
+                    <input [readonly]="isEdit && !editing" type="text" matInput placeholder="Course Description" formControlName="courseDescription">
+
+                    <mat-error>
+                        {{ courseForm.get('courseDescription')?.errors?.['required'] ? errorMessages.courseDescription.messageRequired
+                        : courseForm.get('courseDescription')?.errors?.['maxlength'] ? errorMessages.courseDescription.messageLength
+                        : null }}
+                    </mat-error>
+                </mat-form-field>
+
+            </div>
+
+            <!-- Action Buttons -->
+            <div [ngStyle]="{'visibility': editing || !isEdit ? 'visible' : 'hidden'}" class="flex justify-around sm:justify-end sm:gap-10 mb-10">
+                <button type="button" mat-raised-button color="primary" class="m-4 sm-m-auto" 
+                style="padding: 0.5em; font-size: 1.25em; align-self: center;"
+                (click)="onCancelEdit()">
+                    Cancel
+                </button>
+                <button type="submit" mat-raised-button color="primary" class="m-4 sm-m-auto" 
+                style="padding: 0.5em; font-size: 1.25em; align-self: center;" [disabled]="saveDisabled">
+                    Save
+                </button>
+            </div>
+
+        </form>
+    </ng-container>
+</div>

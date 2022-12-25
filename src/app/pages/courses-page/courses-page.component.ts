@@ -23,6 +23,7 @@ export class CoursesPageComponent implements OnInit {
         this.courseService.getCourses()
         .subscribe((courseData: Courses) => {
             this.courses = courseData;
+            this.courseService.dataChanged = false;
         });
     }
 }

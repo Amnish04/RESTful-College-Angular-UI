@@ -1,0 +1,92 @@
+.course-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    grid-column-gap: 1rem;
+    grid-row-gap: 0.1em;
+}
+    
+.course-grid .grid-child:nth-child(1) { grid-area: 1 / 1 / 1 / 1; }
+.course-grid .grid-child:nth-child(2) { grid-area: 1 / 2 / 1 / 2; }
+
+
+.course-grid div,
+.course-grid .grid-child,
+.course-grid input[type='text'],
+.course-grid input[type='email'],
+.course-grid select {
+    width: 100%;
+    margin: auto;
+}
+
+.course-grid label {
+    font-weight: bold;
+    font-size: 1.25em;
+}
+
+.course-grid input[type='text'],
+.course-grid input[type='email'] {
+    padding: 0.25em;
+    border-radius: 0.25em;
+}
+
+@media screen and (max-width: 1200px) {
+
+    /* TO BE DONE */
+    .course-grid {
+        grid-template-columns: 95%;
+        grid-template-rows: repeat(2, 100px);
+    }
+
+    .course-grid .grid-child:nth-child(1) { grid-area: 1 / 1 / span 1 / 1; }
+    .course-grid .grid-child:nth-child(2) { grid-area: 2 / 1 / span 1 / 1; }
+}
+
+
+/* Input Override */
+::ng-deep .mat-form-field-label {
+    /*change color of label*/
+    color: grey !important;
+}
+
+::ng-deep .mat-focused .mat-form-field-label {
+    /*change color of label*/
+    color: var(--color-accent) !important;
+}
+
+::ng-deep.mat-form-field-underline {
+    /*change color of underline*/
+    background-color: black !important;
+}
+
+/* Checkbox Override */
+::ng-deep .mat-checkbox-frame {border-color: black;}
+::ng-deep .mat-checkbox-mixedmark {background-color: white;}
+::ng-deep .mat-checkbox-disabled .mat-checkbox-label {color: black;}
+::ng-deep .mat-checkbox-checkmark-path {
+    stroke: white !important;
+}
+
+/* Radio Override */
+::ng-deep .mat-radio-outer-circle {
+    border-color: black;
+}
+::ng-deep .mat-radio-button.mat-radio-disabled .mat-radio-label-content {
+    color: black;
+}
+::ng-deep .mat-radio-button.mat-radio-disabled.mat-radio-checked .mat-radio-outer-circle, .mat-radio-button.mat-radio-disabled .mat-radio-outer-circle {
+    border-color: rgba(40, 35, 35, 0.5);
+    background-color: var(--color-accent);
+}
+
+/* Select Override */
+::ng-deep .mat-select-value {
+    color: black;
+}
+::ng-deep .mat-select-disabled .mat-select-value {
+    color: black;
+}
+
+::ng-deep .mat-flat-button.mat-primary.mat-button-disabled, .mat-flat-button.mat-accent.mat-button-disabled, .mat-flat-button.mat-warn.mat-button-disabled, .mat-flat-button.mat-button-disabled.mat-button-disabled, .mat-raised-button.mat-primary.mat-button-disabled, .mat-raised-button.mat-accent.mat-button-disabled, .mat-raised-button.mat-warn.mat-button-disabled, .mat-raised-button.mat-button-disabled.mat-button-disabled, .mat-fab.mat-primary.mat-button-disabled, .mat-fab.mat-accent.mat-button-disabled, .mat-fab.mat-warn.mat-button-disabled, .mat-fab.mat-button-disabled.mat-button-disabled, .mat-mini-fab.mat-primary.mat-button-disabled, .mat-mini-fab.mat-accent.mat-button-disabled, .mat-mini-fab.mat-warn.mat-button-disabled, .mat-mini-fab.mat-button-disabled.mat-button-disabled {
+    background-color: var(--color-accent);
+}
