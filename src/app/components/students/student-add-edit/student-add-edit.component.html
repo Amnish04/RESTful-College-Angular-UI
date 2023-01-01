@@ -114,7 +114,7 @@
         
                 <!-- Enrolment -->
                 <div class="grid-child" [ngClass]="{'bg-slate-100 p-1 rounded-lg': isEdit && !editing}">
-
+                    
                     <label id="status-radio-group-label">Employment Status</label>
                     <br>
                     <mat-radio-group formControlName="status" [color]="'primary'" [disabled]="isEdit && !editing"
@@ -125,6 +125,10 @@
                         <mat-radio-button class="m-2" [value]="'Full Time'">
                             Full Time
                         </mat-radio-button>
+
+                        <mat-error *ngIf="studentForm.get('status')?.touched">
+                            {{ studentForm.get('status')?.errors?.['required'] ? errorMessages.status.messageRequired : null }}
+                        </mat-error>
                     </mat-radio-group>
 
                     <!-- <label for="enrolmentInput">Enrolment Status</label> <br>
@@ -145,7 +149,12 @@
                             {{course.courseCode}}
                         </mat-option>
                     </mat-select>
-                </mat-form-field>
+
+                    <mat-error>
+                        {{ studentForm.get('course')?.errors?.['required'] ? errorMessages.course.messageRequired
+                        : null }}
+                    </mat-error>
+                </mat-form-field> 
                 
             </div>
 

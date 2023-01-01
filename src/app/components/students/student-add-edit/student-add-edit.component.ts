@@ -61,6 +61,12 @@ export class StudentAddEditComponent implements OnInit {
                 messageRequired: getErrorMessage(ErrorTypes.Required, 'Province'),
                 messageLength: getErrorMessage(ErrorTypes.MaxLength, 'Province', {maxlength: 15}),
             },
+        },
+        status: {
+            messageRequired: getErrorMessage(ErrorTypes.Required, 'Status')
+        },
+        course: {
+            messageRequired: getErrorMessage(ErrorTypes.Required, 'Course')
         }
     };
 
@@ -102,8 +108,8 @@ export class StudentAddEditComponent implements OnInit {
                 province: [this.student.addressProvince, [Validators.required, Validators.maxLength(15)]]
             }),
             TA: [this.student.TA],
-            status: [this.student.status],
-            course: [this.student.course]
+            status: [this.student.status, Validators.required],
+            course: [this.student.course, Validators.required]
         });
     }
     
