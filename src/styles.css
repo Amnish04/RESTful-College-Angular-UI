@@ -84,4 +84,9 @@ mat-dialog-container {
     .border-mobile {
         border: 1px solid grey;
     }
+
+    div.mat-paginator-container {
+        flex-direction: column;
+        align-items: flex-end;
+    }
 }
