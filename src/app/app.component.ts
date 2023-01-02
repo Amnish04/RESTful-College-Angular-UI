@@ -1,3 +1,4 @@
+import { LoadingService } from './services/loading/loading.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -12,7 +13,8 @@ export class AppComponent implements OnInit {
     }
 
     constructor(
-        private router: Router
+        private router: Router,
+        public loadingService: LoadingService
     ) {
     }
 

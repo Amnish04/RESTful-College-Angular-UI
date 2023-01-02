@@ -1,0 +1,10 @@
+.app-spinner {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    z-index: 1;
+}
+
+.bg-loading {
+    opacity: 0.5;
+}

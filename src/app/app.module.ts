@@ -1,4 +1,4 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { StudentService } from './services/students/student-service.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -30,6 +30,7 @@ import { YesNoModalComponent } from './components/yes-no-modal/yes-no-modal.comp
 import { MatDialogModule } from '@angular/material/dialog';
 import { CoursesTableComponent } from './components/courses/courses-table/courses-table.component';
 import { CourseAddEditComponent } from './components/courses/course-add-edit/course-add-edit.component';
+import { LoadingInterceptor } from './interceptors/loading.interceptor';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,9 @@ import { CourseAddEditComponent } from './components/courses/course-add-edit/cou
     MatDialogModule
   ],
   providers: [
-    StudentService
+    {
+        provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })
