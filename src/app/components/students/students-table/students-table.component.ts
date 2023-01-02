@@ -92,10 +92,11 @@ export class StudentsTableComponent implements OnInit, OnChanges {
     }
 
     paginationChanged(info: any) {
+        this.recordsPerPage = info.pageSize;
+        
         this.pageNumber = info.pageIndex;
         this.displayedStudents = this.getPagedData(this.studentData, this.pageNumber);
 
-        this.recordsPerPage = info.pageSize
     }
 
     //#endregion

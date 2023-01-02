@@ -87,10 +87,10 @@ export class CoursesTableComponent implements OnInit, OnChanges {
     }
 
     paginationChanged(info: any) {
+        this.recordsPerPage = info.pageSize;
+        
         this.pageNumber = info.pageIndex;
         this.displayedCourses = this.getPagedData(this.courses, this.pageNumber);
-
-        this.recordsPerPage = info.pageSize
     }
 
     //#endregion
