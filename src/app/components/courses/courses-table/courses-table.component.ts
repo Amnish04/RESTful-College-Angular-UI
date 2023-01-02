@@ -15,9 +15,6 @@ export class CoursesTableComponent implements OnInit {
     tableTitle: string = 'Courses Data';
 
     @Input('courses') courses: any;
-    totalRecords: number;
-    recordsPerPage: number = 10;
-    pageNumber: number = 0;
 
     colDefs: TableColumns = [
         {title: 'ID', field: 'courseId', sortable: true, sorted: null},
@@ -70,8 +67,11 @@ export class CoursesTableComponent implements OnInit {
     }
 
     //#region pagination
+    totalRecords: number;
+    recordsPerPage: number = 5;
+    pageNumber: number = 0;
     pageSizeOptions: number[] = [5, 10, 25, 100];
-    
+
     getPagedData(data: Courses, pageNumber: number): Courses {
         this.totalRecords = data.length;
 

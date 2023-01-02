@@ -1,7 +1,7 @@
 import { StudentService } from './../../../services/students/student-service.service';
 import { SortTypes } from './../../../utilities/enums';
 import { TableColumns } from './../../../models/tabel.model';
-import { Student } from './../../../models/student.model';
+import { Student, Students } from './../../../models/student.model';
 import { Component, OnInit, OnChanges, Input, SimpleChanges } from '@angular/core';
 import { getObjectValues, isDefNotNull } from 'src/app/utilities/utility-functions';
 
@@ -75,4 +75,25 @@ export class StudentsTableComponent implements OnInit, OnChanges {
             })
         }
     }
+
+    //#region pagination
+    totalRecords: number;
+    recordsPerPage: number = 5;
+    pageNumber: number = 0;
+    pageSizeOptions: number[] = [5, 10, 25, 100];
+
+    getPagedData(data: Students, pageNumber: number): Students {
+        this.totalRecords = data.length;
+
+        let startIndex = pageNumber * this.recordsPerPage;
+        return data.slice(startIndex, startIndex + this.recordsPerPage);
+    }
+
+    paginationChanged(info: any) {
+        this.pageNumber = info.pageIndex;
+        this.recordsPerPage = info.pageSize
+    }
+
+    //#endregion
+
 }
