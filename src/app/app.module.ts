@@ -31,6 +31,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { CoursesTableComponent } from './components/courses/courses-table/courses-table.component';
 import { CourseAddEditComponent } from './components/courses/course-add-edit/course-add-edit.component';
 import { LoadingInterceptor } from './interceptors/loading.interceptor';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { LoadingInterceptor } from './interceptors/loading.interceptor';
     MatDividerModule,
     FormsModule,
     ReactiveFormsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatPaginatorModule
   ],
   providers: [
     {

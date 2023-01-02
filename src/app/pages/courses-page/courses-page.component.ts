@@ -8,6 +8,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./courses-page.component.css']
 })
 export class CoursesPageComponent implements OnInit {
+    pageNumber: number = 0; // 0 based counting
+    recordsPerPage = 10;
+    totalRecords: number;
+
     pageTitle: string = 'Courses Page';
     courses: Courses;
 

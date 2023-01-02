@@ -20,13 +20,28 @@
                     </th>
                 </tr>
             </thead>
-            <tbody>
-                <tr [routerLink]="[course.courseId]" [queryParams]="{mode: 'edit'}" appClickOnKey
-                    *ngFor="let course of courses" 
-                    class="cursor-pointer focus:bg-slate-100 hover:bg-slate-100 active:bg-slate-200 outline-none" >
-                    <td *ngFor="let field of getObjectValues(formatCourseData(course))" class="border border-slate-300 p-3 text-center">{{field}}</td>
-                </tr>
-            </tbody>
+            <ng-container *ngIf="courses">
+                <tbody>
+                    <tr [routerLink]="[course.courseId]" [queryParams]="{mode: 'edit'}" appClickOnKey
+                        *ngFor="let course of getPagedData(courses, pageNumber)" 
+                        class="cursor-pointer focus:bg-slate-100 hover:bg-slate-100 active:bg-slate-200 outline-none" >
+                        <td *ngFor="let field of getObjectValues(formatCourseData(course))" class="border border-slate-300 p-3 text-center">{{field}}</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td [attr.colspan]="colDefs.length">
+                            <mat-paginator
+                                [pageSize]="recordsPerPage"
+                                [length]="courses.length"
+                                [pageSizeOptions]="pageSizeOptions"
+                                (page)="paginationChanged($event)"
+                                aria-label="Select page">
+                            </mat-paginator>
+                        </td>
+                    </tr>
+                </tfoot>
+            </ng-container>
         </table>
     </div>
 </div>

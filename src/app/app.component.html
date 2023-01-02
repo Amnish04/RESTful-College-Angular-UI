@@ -7,6 +7,8 @@
 </div>
 
 <!-- Show spinner whenever one or more HTTP requests are active -->
-<div *ngIf="loadingService.loading" class="app-spinner">
-    <mat-spinner></mat-spinner>
+<div *ngIf="loadingService.loading" class="spinner-overlay">
+    <div class="app-spinner">
+        <mat-spinner></mat-spinner>
+    </div>
 </div>

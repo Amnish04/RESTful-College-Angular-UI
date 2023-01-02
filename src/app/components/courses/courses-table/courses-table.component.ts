@@ -1,9 +1,10 @@
-import { Course } from './../../../models/course.model';
+import { Course, Courses } from './../../../models/course.model';
 import { SortTypes } from './../../../utilities/enums';
 import { Student } from './../../../models/student.model';
 import { getObjectValues, isDefNotNull } from 'src/app/utilities/utility-functions';
 import { TableColumns } from './../../../models/tabel.model';
 import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
+import { floor } from 'lodash';
 
 @Component({
   selector: 'app-courses-table',
@@ -11,16 +12,18 @@ import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
   styleUrls: ['./courses-table.component.css']
 })
 export class CoursesTableComponent implements OnInit {
-    @Input('courses') courses: any;
     tableTitle: string = 'Courses Data';
+
+    @Input('courses') courses: any;
+    totalRecords: number;
+    recordsPerPage: number = 10;
+    pageNumber: number = 0;
 
     colDefs: TableColumns = [
         {title: 'ID', field: 'courseId', sortable: true, sorted: null},
         {title: 'Course', field: 'courseCode', sortable: true, sorted: null},
         {title: 'Description', field: 'courseDescription', sortable: true, sorted: null},
     ];
-
-    @Input('studentData') studentData: any;
 
     constructor() {}
 
@@ -65,5 +68,22 @@ export class CoursesTableComponent implements OnInit {
             })
         }
     }
+
+    //#region pagination
+    pageSizeOptions: number[] = [5, 10, 25, 100];
+    
+    getPagedData(data: Courses, pageNumber: number): Courses {
+        this.totalRecords = data.length;
+
+        let startIndex = pageNumber * this.recordsPerPage;
+        return data.slice(startIndex, startIndex + this.recordsPerPage);
+    }
+
+    paginationChanged(info: any) {
+        this.pageNumber = info.pageIndex;
+        this.recordsPerPage = info.pageSize
+    }
+
+    //#endregion
 
 }

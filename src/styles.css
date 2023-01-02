@@ -5,6 +5,9 @@
 
 :root {
     --color-accent: palevioletred;
+
+    --bg-pagination: white;
+    --pagination-color: black;
 }
 
 @tailwind base;
@@ -47,6 +50,25 @@ h1, h2, h3, h4, h5, h6 {
 mat-dialog-container {
     background-color: white !important;
     color: black !important;
+}
+
+/* Pagination */
+.mat-paginator-container {
+    background-color: var(--bg-pagination);
+}
+
+.mat-paginator-page-size-label,
+.mat-select-value,
+.mat-paginator-range-label,
+.mat-paginator-icon {
+    color: var(--pagination-color);
+}
+
+.mat-select-arrow {
+    color: var(--pagination-color);
+}
+.mat-form-field-infix {
+    border-bottom: 1px solid var(--pagination-color);
 }
 
 /* Responsive */
