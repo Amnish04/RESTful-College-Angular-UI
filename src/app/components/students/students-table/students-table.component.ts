@@ -32,6 +32,7 @@ export class StudentsTableComponent implements OnInit, OnChanges {
     ngOnChanges(changes: SimpleChanges): void {
         if (changes['studentData'] && isDefNotNull(this.studentData)) {
             this.studentData = this.studentData.map((student: Student) => this.formatStudentData(student));
+            this.displayedStudents = this.getPagedData(this.studentData, this.pageNumber);
         }
     }
 
@@ -55,13 +56,13 @@ export class StudentsTableComponent implements OnInit, OnChanges {
         if (column?.sortable && (column?.sorted || column?.sorted === null)) { // Stupid TS step
             if (column.sorted === SortTypes.Ascending) {
                 // Sort in descending
-                (this.studentData as any).sort((a: any, b: any) => {
+                (this.displayedStudents as any).sort((a: any, b: any) => {
                     return a[fieldName] < b[fieldName] ? 1 : a[fieldName] > b[fieldName] ? -1 : 0;
                 })
                 column.sorted = SortTypes.Descending;
             } else if (column.sorted === null || column.sorted === SortTypes.Descending) {
                 // Sort in ascending
-                (this.studentData as any).sort((a: any, b: any) => {
+                (this.displayedStudents as any).sort((a: any, b: any) => {
                     return a[fieldName] < b[fieldName] ? -1 : a[fieldName] > b[fieldName] ? 1 : 0;
                 })
                 column.sorted = SortTypes.Ascending;
@@ -81,6 +82,7 @@ export class StudentsTableComponent implements OnInit, OnChanges {
     recordsPerPage: number = 5;
     pageNumber: number = 0;
     pageSizeOptions: number[] = [5, 10, 25, 100];
+    displayedStudents: Students;
 
     getPagedData(data: Students, pageNumber: number): Students {
         this.totalRecords = data.length;
@@ -91,6 +93,8 @@ export class StudentsTableComponent implements OnInit, OnChanges {
 
     paginationChanged(info: any) {
         this.pageNumber = info.pageIndex;
+        this.displayedStudents = this.getPagedData(this.studentData, this.pageNumber);
+
         this.recordsPerPage = info.pageSize
     }
 

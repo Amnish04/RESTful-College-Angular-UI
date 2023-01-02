@@ -23,7 +23,7 @@
             <ng-container *ngIf="courses">
                 <tbody>
                     <tr [routerLink]="[course.courseId]" [queryParams]="{mode: 'edit'}" appClickOnKey
-                        *ngFor="let course of getPagedData(courses, pageNumber)" 
+                        *ngFor="let course of displayedCourses" 
                         class="cursor-pointer focus:bg-slate-100 hover:bg-slate-100 active:bg-slate-200 outline-none" >
                         <td *ngFor="let field of getObjectValues(formatCourseData(course))" class="border border-slate-300 p-3 text-center">{{field}}</td>
                     </tr>
