@@ -2,6 +2,11 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.2.
 
+Link: https://restful-crud-cb127.web.app/
+
+Link to API: 
+https://github.com/Amnish04/RESTful-College-REST-API
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
