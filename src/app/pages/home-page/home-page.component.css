@@ -1,11 +1,5 @@
-@media screen and (max-width: 390px) {
-    #buttonContainer {
-        gap: 2.5em;
-    }
-}
-
 #homePageLeftButton,
-#homePageLeftButton {
+#homePageRightButton {
     transition: 100ms ease-in-out;
 }
 
@@ -39,6 +33,29 @@
 
 a[mat-button] {
     padding: 2.5rem;
+}
+
+/* Responsive */
+@media screen and (max-width: 390px) {
+    #buttonContainer {
+        gap: 2.5em;
+    }
+}
+
+/* Animation */
+#homePageHeading {
+    position: relative;
+    animation: fallFromTop 1s ease-in-out forwards;
+}
+
+#homePageLeftButton {
+    position: relative;
+    animation: fallFromLeft 1s ease-in-out forwards;
+}
+
+#homePageRightButton {
+    position: relative;
+    animation: fallFromRight 1s ease-in-out forwards;
 }
 
 @keyframes background-flow {

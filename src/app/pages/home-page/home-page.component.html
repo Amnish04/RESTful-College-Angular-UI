@@ -2,7 +2,7 @@
     [ngStyle]="{'--background-gradient': backgroundGradient}"
     >
     <div class="flex flex-col gap-20">
-        <h1 class="fancy-font text-6xl text-center font-bold">{{pageTitle}}</h1>
+        <h1 id="homePageHeading" class="fancy-font text-6xl text-center font-bold">{{pageTitle}}</h1>
 
         <div id="buttonContainer" class="flex flex-wrap justify-center gap-40 my-5 antialiased">
             <a id="homePageLeftButton" #leftButton (mouseover)="onLeftButtonHover()" (focus)="onLeftButtonHover()" 

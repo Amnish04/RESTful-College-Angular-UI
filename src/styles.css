@@ -90,3 +90,44 @@ mat-dialog-container {
         align-items: flex-end;
     }
 }
+
+/* Animations */
+
+/* Requires postion to be set to relative on host element */
+@keyframes fallFromTop {
+    0% {
+        top: -1000px;
+    }
+    50% {
+        top: 40px;
+    }
+    100% {
+        top: 0px;
+    }
+}
+
+/* Requires postion to be set to relative on host element */
+@keyframes fallFromLeft {
+    0% {
+        left: -1000px;
+    }
+    50% {
+        left: 40px;
+    }
+    100% {
+        left: 0px;
+    }
+}
+
+/* Requires postion to be set to relative on host element */
+@keyframes fallFromRight {
+    0% {
+        right: -1000px;
+    }
+    50% {
+        right: 40px;
+    }
+    100% {
+        right: 0px;
+    }
+}
