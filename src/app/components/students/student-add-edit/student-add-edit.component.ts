@@ -153,6 +153,7 @@ export class StudentAddEditComponent implements OnInit {
         if (this.isEdit) {
 
             this.editing = false;
+            this.studentForm.markAsPristine();
             this.resetControls();
         } else { // Add student is open
             this.location.back();
