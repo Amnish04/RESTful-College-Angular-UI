@@ -163,4 +163,5 @@ mat-dialog-container {
 /* Custom Classes */
 .settings-modal mat-dialog-container {
     padding: 0;
+    overflow: hidden;
 }
