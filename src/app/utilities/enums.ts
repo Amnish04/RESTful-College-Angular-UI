@@ -9,3 +9,15 @@ export enum ErrorTypes {
     MinLength = 'minlength',
     Email = 'email',
 }
+
+export enum Settings {
+    Audio = 'audio',
+    Additional = 'additional',
+    Placeholder = 'placeholder'
+}
+
+export enum ButtonSounds {
+    Sound1 = 'sound1',
+    Sound2 = 'sound2',
+    Sound3 = 'sound3',
+}

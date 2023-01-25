@@ -1,11 +1,25 @@
 <header class="border bg-slate-100">
-    <div class="flex flex-wrap justify-between sm:justify-between">
-        <div class="table mx-8 my-5">
-            <h1 [ngClass]="{'font-semi-fancy': fancyFont}" class="text-4xl font-bold text-center md:text-left table-cell align-middle">{{title}}</h1>
+    <div class="flex flex-wrap justify-between sm:justify-between items-center">
+        <div class="mx-8 my-5">
+            <h1 [ngClass]="{'font-semi-fancy': fancyFont}" class="text-4xl font-bold text-center md:text-left table-cell">{{title}}</h1>
         </div>
 
-        <div class="mx-5 my-3 sm-m-auto">
-            <button appSoundOnClick *ngIf="goBackButton" mat-raised-button color="primary" style="padding: 0.5em; font-size: 1.25em; transition: 200ms ease-in-out; align-self: center;"
+        <div *ngIf="showSettings">
+            <button appSoundOnClick (click)="openSettings()"
+            matRipple [matRippleColor]="'rgb(0, 0, 0, 0.05)'" class="p-3 rounded-full mr-2 sm:mr-10 table">
+                <mat-icon class="align-middle">settings</mat-icon>
+            </button>
+        </div>
+
+        <div *ngIf="showCloseButton">
+            <button appSoundOnClick (click)="onClose()"
+            matRipple [matRippleColor]="'rgb(0, 0, 0, 0.05)'" class="p-3 rounded-full mr-2 sm:mr-10 table">
+                <mat-icon class="align-middle">close</mat-icon>
+            </button>
+        </div>
+
+        <div *ngIf="goBackButton" class="mx-5 my-3 sm-m-auto">
+            <button appSoundOnClick mat-raised-button color="primary" style="padding: 0.5em; font-size: 1.25em; transition: 200ms ease-in-out;"
             (click)="goBack()"
             >Go Back</button>
         </div>

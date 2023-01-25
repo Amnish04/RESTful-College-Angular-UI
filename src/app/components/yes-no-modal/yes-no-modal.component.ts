@@ -7,7 +7,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./yes-no-modal.component.css']
 })
 export class YesNoModalComponent implements OnInit {
-    @Input('dialogTitle') dialogTitle: string;
+    dialogTitle: string;
 
     constructor(
         public dialogRef: MatDialogRef<YesNoModalComponent>,
