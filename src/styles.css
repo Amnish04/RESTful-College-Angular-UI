@@ -102,6 +102,25 @@ mat-dialog-container {
 
 /* Animations */
 
+.button-appear {
+    scale: 0;
+    animation: appearFromNoWhere 500ms ease-in-out 150ms forwards;
+}
+
+@keyframes appearFromNoWhere {
+    0% {
+        scale: 0;
+    }
+
+    50% {
+        scale: 1.125;
+    }
+
+    100% {
+        scale: 1;
+    }
+}
+
 /* Requires postion to be set to relative on host element */
 @keyframes fallFromTop {
     0% {
