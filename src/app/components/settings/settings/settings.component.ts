@@ -20,7 +20,7 @@ export class SettingsComponent implements OnInit, OnDestroy {
     ButtonSounds = ButtonSounds;
     
     controlSubscription: Subscription;
-    soundControl = new FormControl('');
+    soundControl = new FormControl(this.soundService.buttonSoundSelected);
 
     constructor(
         public dialogRef: MatDialogRef<YesNoModalComponent>,

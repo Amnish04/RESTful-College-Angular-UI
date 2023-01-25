@@ -5,6 +5,7 @@ import { Injectable, OnInit } from '@angular/core';
   providedIn: 'root'
 })
 export class SoundService implements OnInit {
+    buttonSoundSelected = ButtonSounds.Sound3;
     private buttonSoundPath = '../../assets/soundEffects/ButtonClick3.mp3';
     private buttonSound = new Audio(this.buttonSoundPath);
     constructor() { }
@@ -20,19 +21,20 @@ export class SoundService implements OnInit {
     setButtonSound(sound: any) {
         switch(sound) {
             case ButtonSounds.Sound1:
+                this.buttonSoundSelected = sound;
                 this.buttonSoundPath = '../../assets/soundEffects/ButtonClick1.mp3';
-                
                 break;
             case ButtonSounds.Sound2:
+                this.buttonSoundSelected = sound;
                 this.buttonSoundPath = '../../assets/soundEffects/ButtonClick2.mp3';
                 break;
             case ButtonSounds.Sound3:
+                this.buttonSoundSelected = sound;
                 this.buttonSoundPath = '../../assets/soundEffects/ButtonClick3.mp3';
                 break;
         }
         this.buttonSound = new Audio(this.buttonSoundPath);
         this.buttonSound.load();
-        console.log(this.buttonSoundPath)
     }
 
     playButtonSound() {

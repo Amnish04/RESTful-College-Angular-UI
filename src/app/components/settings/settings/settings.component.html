@@ -26,9 +26,9 @@
                     <mat-form-field color="primary">
                         <mat-label>Button Sound</mat-label>
                         <mat-select placeholder="Button Sound" [formControl]="soundControl">
-                          <mat-option value="ButtonSounds.Sound1">Sound 1</mat-option>
-                          <mat-option value="ButtonSounds.Sound2">Sound 2</mat-option>
-                          <mat-option value="ButtonSounds.Sound3">Sound 3</mat-option>
+                          <mat-option [value]="ButtonSounds.Sound1">Sound 1</mat-option>
+                          <mat-option [value]="ButtonSounds.Sound2">Sound 2</mat-option>
+                          <mat-option [value]="ButtonSounds.Sound3">Sound 3</mat-option>
                         </mat-select>
                     </mat-form-field>
                 </div>
