@@ -34,6 +34,8 @@ import { LoadingInterceptor } from './interceptors/loading.interceptor';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { SoundOnClickDirective } from './directives/sound-on-click.directive';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { SettingsComponent } from './components/settings/settings/settings.component';
+import { MatRippleModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -51,6 +53,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     CoursesTableComponent,
     CourseAddEditComponent,
     SoundOnClickDirective,
+    SettingsComponent,
   ],
   imports: [
     BrowserModule,
@@ -71,7 +74,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     ReactiveFormsModule,
     MatDialogModule,
     MatPaginatorModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatRippleModule
   ],
   providers: [
     {
