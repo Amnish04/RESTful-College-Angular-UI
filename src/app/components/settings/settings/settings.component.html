@@ -1,1 +1,16 @@
-<p>settings works!</p>
+<app-page-header [title]="'Settings'" [showCloseButton]="true" (closeClicked)="closeModal()"></app-page-header>
+
+<mat-dialog-content>
+    <div class="settings-grid">
+        <section class="bg-slate-100 setting-types">
+    
+        </section>
+    
+        <section class="setting-details">
+    
+        </section>
+    </div>
+</mat-dialog-content>
+
+<!-- To close the dialog programatically -->
+<button #closeButton mat-dialog-close class="scale-0"></button>

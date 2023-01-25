@@ -11,6 +11,13 @@
             </button>
         </div>
 
+        <div *ngIf="showCloseButton">
+            <button appSoundOnClick (click)="onClose()"
+            matRipple [matRippleColor]="'rgb(0, 0, 0, 0.05)'" class="p-3 rounded-full mr-5 sm:mr-10 table">
+                <mat-icon class="align-middle">close</mat-icon>
+            </button>
+        </div>
+
         <div *ngIf="goBackButton" class="mx-5 my-3 sm-m-auto">
             <button appSoundOnClick mat-raised-button color="primary" style="padding: 0.5em; font-size: 1.25em; transition: 200ms ease-in-out;"
             (click)="goBack()"

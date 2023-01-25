@@ -1,6 +1,6 @@
 import { YesNoModalComponent } from './../../yes-no-modal/yes-no-modal.component';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-settings',
@@ -8,13 +8,17 @@ import { Component, OnInit, Inject } from '@angular/core';
   styleUrls: ['./settings.component.css']
 })
 export class SettingsComponent implements OnInit {
+    @ViewChild('closeButton') closeButton: ElementRef;
 
-  constructor(
-    public dialogRef: MatDialogRef<YesNoModalComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
-  ) { }
+    constructor(
+        public dialogRef: MatDialogRef<YesNoModalComponent>,
+        @Inject(MAT_DIALOG_DATA) public data: any
+    ) { }
 
-  ngOnInit(): void {
-  }
+    ngOnInit(): void {
+    }
 
+    closeModal() {
+        this.closeButton.nativeElement.click();
+    }
 }

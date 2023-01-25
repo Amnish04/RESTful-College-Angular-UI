@@ -159,3 +159,8 @@ mat-dialog-container {
         right: 0px;
     }
 }
+
+/* Custom Classes */
+.settings-modal mat-dialog-container {
+    padding: 0;
+}
