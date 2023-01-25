@@ -4,8 +4,9 @@ import { Directive, HostListener, OnInit } from '@angular/core';
   selector: '[appSoundOnClick]'
 })
 export class SoundOnClickDirective implements OnInit {
+    audioPath = '../../assets/soundEffects/ButtonClick3.mp3';
     audio = new Audio(
-        '../../assets/soundEffects/ButtonClick.mp3'
+        this.audioPath
     );
 
     constructor() { }
@@ -17,7 +18,7 @@ export class SoundOnClickDirective implements OnInit {
     @HostListener('click', ['$event'])
     onButtonClick(evt: Event) {
         if (!this.audio.ended) {
-            new Audio('../../assets/soundEffects/ButtonClick.mp3').play();
+            new Audio(this.audioPath).play();
         } else {
             this.audio.play();
         }
