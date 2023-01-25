@@ -4,11 +4,20 @@
     <div class="flex flex-col gap-20">
         <h1 id="homePageHeading" class="fancy-font text-6xl text-center font-bold">{{pageTitle}}</h1>
 
+        <div class="text-center">
+            <button appClickOnKey appSoundOnClick
+            mat-fab mat-stroked-button color="primary"
+            (click)="openCreditsDetails(credits)"
+            >
+                Credits
+            </button>
+        </div>
+
         <div id="buttonContainer" class="flex flex-wrap justify-center gap-40 my-5 antialiased">
-            <a id="homePageLeftButton" #leftButton (mouseover)="onLeftButtonHover()" (focus)="onLeftButtonHover()" 
+            <a appSoundOnClick id="homePageLeftButton" #leftButton (mouseover)="onLeftButtonHover()" (focus)="onLeftButtonHover()" 
             style="padding: 0.5em; font-size: 1.25em; transition: 200ms ease-in-out;" 
             mat-raised-button color="primary" routerLink="/students">Students</a>
-            <a id="homePageRightButton" #rightButton (mouseover)="onRightButtonHover()" (focus)="onRightButtonHover()" 
+            <a appSoundOnClick id="homePageRightButton" #rightButton (mouseover)="onRightButtonHover()" (focus)="onRightButtonHover()" 
             style="padding: 0.5em; font-size: 1.25em; transition: 200ms ease-in-out;" 
             mat-raised-button color="primary" routerLink="/courses">Courses</a>
         </div>

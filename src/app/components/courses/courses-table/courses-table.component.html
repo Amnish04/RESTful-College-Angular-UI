@@ -2,7 +2,7 @@
     <div class="flex flex-wrap container-80 flex-heading-container">
         <h2 class="font-bold text-3xl px-10 py-5">{{tableTitle}}</h2>
 
-        <button id="addStudentButton" [routerLink]="'add-new'"
+        <button appSoundOnClick id="addStudentButton" [routerLink]="'add-new'"
             style="padding: 0.5em; font-size: 1.25em; transition: 200ms ease-in-out; align-self: center;"
             mat-raised-button color="primary">Add Course</button>
     </div>
@@ -12,7 +12,7 @@
             <thead>
                 <tr>
                     <th [attr.role]="column.sortable ? 'button' : 'presentation'" [tabindex]="column.sortable ? 0 : -1" [attr.aria-label]="column.sortable ? 'Interact to sort the rows by this field' : null" 
-                    appClickOnKey *ngFor="let column of colDefs"
+                    appClickOnKey appSoundOnClick *ngFor="let column of colDefs"
                     [ngClass]="{'cursor-zoom-in': column.sortable && (column.sorted === 'dsc' || column.sorted === null), 'cursor-zoom-out': column.sortable && column.sorted === 'asc'}" 
                     (click)="sortColumnByField(column.field)" 
                     class="border border-slate-300 p-3 focus:bg-slate-100 hover:bg-slate-100 active:bg-slate-200 outline-none">
@@ -22,7 +22,7 @@
             </thead>
             <ng-container *ngIf="courses">
                 <tbody>
-                    <tr [routerLink]="[course.courseId]" [queryParams]="{mode: 'edit'}" appClickOnKey
+                    <tr [routerLink]="[course.courseId]" [queryParams]="{mode: 'edit'}" appClickOnKey appSoundOnClick
                         *ngFor="let course of displayedCourses" 
                         class="cursor-pointer focus:bg-slate-100 hover:bg-slate-100 active:bg-slate-200 outline-none" >
                         <td *ngFor="let field of getObjectValues(formatCourseData(course))" class="border border-slate-300 p-3 text-center">{{field}}</td>

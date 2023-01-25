@@ -1,3 +1,4 @@
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { StudentService } from './../../services/students/student-service.service';
 import { Component, OnInit, ViewChild, ElementRef, Renderer2 } from '@angular/core';
 
@@ -11,9 +12,10 @@ export class HomePageComponent implements OnInit {
     pageTitle = "Welcome to RESTful Data Management";
     leftButtonHovered: boolean = true;
     backgroundGradient: string = 'linear-gradient(to right, pink, white)';
+    credits = 'Sound effects obtained from https://www.zapsplat.com';
 
     constructor(
-        private studentService: StudentService
+        private snackBar: MatSnackBar
     ) { }
 
     @ViewChild('welcomePage') welcomePage: ElementRef<HTMLDivElement>;
@@ -30,5 +32,12 @@ export class HomePageComponent implements OnInit {
 
     onRightButtonHover() {
         this.backgroundGradient = 'linear-gradient(to right, white, pink)';
+    }
+
+    openCreditsDetails(message: string) {
+        this.snackBar.open(message, 'Understood', {
+            duration: 1000 * 5,
+            panelClass: ['mat-toolbar', 'mat-primary']
+        });
     }
 }

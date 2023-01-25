@@ -32,6 +32,8 @@ import { CoursesTableComponent } from './components/courses/courses-table/course
 import { CourseAddEditComponent } from './components/courses/course-add-edit/course-add-edit.component';
 import { LoadingInterceptor } from './interceptors/loading.interceptor';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { SoundOnClickDirective } from './directives/sound-on-click.directive';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     YesNoModalComponent,
     CoursesTableComponent,
     CourseAddEditComponent,
+    SoundOnClickDirective,
   ],
   imports: [
     BrowserModule,
@@ -67,7 +70,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     FormsModule,
     ReactiveFormsModule,
     MatDialogModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatSnackBarModule
   ],
   providers: [
     {

@@ -2,7 +2,7 @@
     <ul class="nav-links">
         <ul class="nav-links">
             <li>
-                <a routerLink="/" routerLinkActive="active-link" 
+                <a appSoundOnClick routerLink="/" routerLinkActive="active-link" 
                 [routerLinkActiveOptions]="{ exact: true }"
                 mat-fab color="primary" aria-label="Go to Home Page">
                     <mat-icon>home</mat-icon>
@@ -11,10 +11,10 @@
         </ul>
         <ul class="nav-links">
             <li>
-                <a class="nav-link" routerLink="/students" routerLinkActive="active-link">Students</a>
+                <a appSoundOnClick class="nav-link" routerLink="/students" routerLinkActive="active-link">Students</a>
             </li>
             <li>
-                <a class="nav-link" routerLink="/courses" routerLinkActive="active-link">Courses</a>
+                <a appSoundOnClick class="nav-link" routerLink="/courses" routerLinkActive="active-link">Courses</a>
             </li>
         </ul>
     </ul>
