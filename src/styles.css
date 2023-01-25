@@ -160,8 +160,57 @@ mat-dialog-container {
     }
 }
 
-/* Custom Classes */
+.rotateInfinite {
+    animation: rotation 2s linear infinite;
+}
+
+@keyframes rotation {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(359deg);
+    }
+}
+
+/* Settings Modal */
 .settings-modal mat-dialog-container {
     padding: 0;
     overflow: hidden;
+}
+
+mat-drawer {
+    width: 30%;
+    padding: 0.5em;
+}
+
+mat-drawer.mat-drawer {
+    background-color: rgb(241 245 249);
+    color: black;
+}
+
+mat-drawer-content {
+    width: 100%;
+    padding: 0.5em; 
+}
+
+.mat-drawer-content {
+    background-color: white;
+    color: black;
+}
+
+/* Mat Controls */
+.mat-form-field-label {
+    /*change color of label*/
+    color: grey !important;
+}
+
+.mat-focused .mat-form-field-label {
+    /*change color of label*/
+    color: var(--color-accent) !important;
+}
+
+.mat-form-field-underline {
+    /*change color of underline*/
+    background-color: black !important;
 }

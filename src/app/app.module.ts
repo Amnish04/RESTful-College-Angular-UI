@@ -36,6 +36,8 @@ import { SoundOnClickDirective } from './directives/sound-on-click.directive';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { SettingsComponent } from './components/settings/settings/settings.component';
 import { MatRippleModule } from '@angular/material/core';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatButtonToggleModule} from '@angular/material/button-toggle'; 
 
 @NgModule({
   declarations: [
@@ -75,7 +77,9 @@ import { MatRippleModule } from '@angular/material/core';
     MatDialogModule,
     MatPaginatorModule,
     MatSnackBarModule,
-    MatRippleModule
+    MatRippleModule,
+    MatSidenavModule,
+    MatButtonToggleModule
   ],
   providers: [
     {
