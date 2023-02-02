@@ -82,7 +82,7 @@ export class StudentsTableComponent implements OnInit, OnChanges {
     recordsPerPage: number = 5;
     pageNumber: number = 0;
     pageSizeOptions: number[] = [5, 10, 25, 100];
-    displayedStudents: Students;
+    displayedStudents: any[];
 
     getPagedData(data: Students, pageNumber: number): Students {
         this.totalRecords = data.length;

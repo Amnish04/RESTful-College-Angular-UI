@@ -37,7 +37,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { SettingsComponent } from './components/settings/settings/settings.component';
 import { MatRippleModule } from '@angular/material/core';
 import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatButtonToggleModule} from '@angular/material/button-toggle'; 
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatTooltipModule} from '@angular/material/tooltip'; 
 
 @NgModule({
   declarations: [
@@ -79,7 +80,8 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
     MatSnackBarModule,
     MatRippleModule,
     MatSidenavModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatTooltipModule
   ],
   providers: [
     {
