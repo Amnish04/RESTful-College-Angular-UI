@@ -38,7 +38,8 @@ import { SettingsComponent } from './components/settings/settings/settings.compo
 import { MatRippleModule } from '@angular/material/core';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
-import {MatTooltipModule} from '@angular/material/tooltip'; 
+import {MatTooltipModule} from '@angular/material/tooltip';
+import { ExtractFirstWordPipe } from './pipes/extract-first-word.pipe'; 
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     CourseAddEditComponent,
     SoundOnClickDirective,
     SettingsComponent,
+    ExtractFirstWordPipe,
   ],
   imports: [
     BrowserModule,
