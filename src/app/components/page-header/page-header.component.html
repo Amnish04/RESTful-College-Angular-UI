@@ -20,8 +20,10 @@
 
         <div *ngIf="goBackButton" class="mx-5 my-3 sm-m-auto">
             <button appSoundOnClick mat-raised-button color="primary" style="padding: 0.5em; font-size: 1.25em; transition: 200ms ease-in-out;"
-            (click)="goBack()"
-            >Go Back</button>
+            (click)="goBack()">
+            <mat-icon>chevron_left</mat-icon>
+            Go Back
+        </button>
         </div>
     </div>
 </header>

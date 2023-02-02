@@ -8,6 +8,8 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class YesNoModalComponent implements OnInit {
     dialogTitle: string;
+    yesTitle: string;
+    noTitle: string;
 
     constructor(
         public dialogRef: MatDialogRef<YesNoModalComponent>,
@@ -16,5 +18,7 @@ export class YesNoModalComponent implements OnInit {
 
     ngOnInit(): void {
         this.dialogTitle = this.data?.dialogTitle ?? 'Yes or No?';
+        this.yesTitle = this.data?.yesTitle ?? 'Yes';
+        this.noTitle = this.data?.noTitle ?? 'No';
     }
 }
