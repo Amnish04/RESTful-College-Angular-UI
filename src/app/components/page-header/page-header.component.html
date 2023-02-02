@@ -12,7 +12,7 @@
         </div>
 
         <div *ngIf="showCloseButton">
-            <button appSoundOnClick (click)="onClose()"
+            <button appSoundOnClick (click)="onClose()" matTooltip="Close"
             matRipple [matRippleColor]="'rgb(0, 0, 0, 0.05)'" class="p-3 rounded-full mr-2 sm:mr-10 table">
                 <mat-icon class="align-middle">close</mat-icon>
             </button>
