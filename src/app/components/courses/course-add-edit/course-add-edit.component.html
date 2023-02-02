@@ -10,11 +10,13 @@
                     <button appSoundOnClick type="button" mat-raised-button color="primary" class="m-4 sm-m-auto" 
                     style="padding: 0.5em; font-size: 1.25em; transition: 200ms ease-in-out; align-self: center;"
                     (click)="editing = true" >
+                        <mat-icon>edit</mat-icon>
                         Edit
                     </button>
                     <button appSoundOnClick type="button" mat-raised-button color="primary" class="m-4 sm-m-auto" 
                     style="padding: 0.5em; font-size: 1.25em; transition: 200ms ease-in-out; align-self: center;"
                     (click)="onDelete()">
+                        <mat-icon>delete</mat-icon>
                         Delete
                     </button>
                 </div>
@@ -53,10 +55,12 @@
                 <button appSoundOnClick type="button" mat-raised-button color="primary" class="m-4 sm-m-auto" 
                 style="padding: 0.5em; font-size: 1.25em; align-self: center;"
                 (click)="onCancelEdit()">
+                    <mat-icon>cancel</mat-icon>
                     Cancel
                 </button>
                 <button appSoundOnClick type="submit" mat-raised-button color="primary" class="m-4 sm-m-auto" 
                 style="padding: 0.5em; font-size: 1.25em; align-self: center;" [disabled]="saveDisabled">
+                    <mat-icon>save</mat-icon>
                     Save
                 </button>
             </div>
