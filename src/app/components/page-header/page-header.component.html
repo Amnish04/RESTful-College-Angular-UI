@@ -5,14 +5,14 @@
         </div>
 
         <div *ngIf="showSettings">
-            <button appSoundOnClick (click)="openSettings()" matTooltip="Settings"
+            <button appSoundOnClick (click)="openSettings()" matTooltip="Settings" matTooltipTouchGestures="auto"
             matRipple [matRippleColor]="'rgb(0, 0, 0, 0.05)'" class="p-3 rounded-full mr-2 sm:mr-10 table">
                 <mat-icon class="align-middle">settings</mat-icon>
             </button>
         </div>
 
         <div *ngIf="showCloseButton">
-            <button appSoundOnClick (click)="onClose()" matTooltip="Close"
+            <button appSoundOnClick (click)="onClose()" matTooltip="Close" matTooltipTouchGestures="auto"
             matRipple [matRippleColor]="'rgb(0, 0, 0, 0.05)'" class="p-3 rounded-full mr-2 sm:mr-10 table">
                 <mat-icon class="align-middle">close</mat-icon>
             </button>
