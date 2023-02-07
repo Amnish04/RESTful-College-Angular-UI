@@ -8,13 +8,13 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-    { path: 'students', component: StudentPageComponent },
+    { path: 'students', component: StudentPageComponent, title: "Data Management - Students Page" },
     { path: 'students/:id', component: StudentAddEditComponent },
     { path: 'students/add-new', component: StudentAddEditComponent },
-    { path: 'courses', component: CoursesPageComponent },
+    { path: 'courses', component: CoursesPageComponent, title: "Data Management - Courses Page" },
     { path: 'courses/:id', component: CourseAddEditComponent },
     { path: 'courses/add-new', component: CourseAddEditComponent },
-    { path: '', component: HomePageComponent },
+    { path: '', component: HomePageComponent, title: "Data Management" },
     { path: '**', component: ErrorPageComponent}
 ];
 
