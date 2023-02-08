@@ -5,21 +5,21 @@
         </div>
 
         <div *ngIf="showSettings">
-            <button appSoundOnClick (click)="openSettings()" matTooltip="Settings" matTooltipTouchGestures="auto"
+            <button appSoundOnClick (click)="openSettings()" matTooltip="Settings" matTooltipTouchGestures="auto" [attr.aria-label]="'Settings'"
             matRipple [matRippleColor]="'rgb(0, 0, 0, 0.05)'" class="p-3 rounded-full mr-2 sm:mr-10 table">
                 <mat-icon class="align-middle">settings</mat-icon>
             </button>
         </div>
 
         <div *ngIf="showCloseButton">
-            <button appSoundOnClick (click)="onClose()" matTooltip="Close" matTooltipTouchGestures="auto"
+            <button appSoundOnClick (click)="onClose()" matTooltip="Close" matTooltipTouchGestures="auto" [attr.aria-label]="'Close'"
             matRipple [matRippleColor]="'rgb(0, 0, 0, 0.05)'" class="p-3 rounded-full mr-2 sm:mr-10 table">
                 <mat-icon class="align-middle">close</mat-icon>
             </button>
         </div>
 
         <div *ngIf="goBackButton" class="mx-5 my-3 sm-m-auto">
-            <button appSoundOnClick mat-raised-button color="primary" style="padding: 0.5em; font-size: 1.25em; transition: 200ms ease-in-out;"
+        <button appSoundOnClick mat-raised-button color="primary" style="padding: 0.5em; font-size: 1.25em; transition: 200ms ease-in-out;"
             (click)="goBack()">
             <mat-icon>chevron_left</mat-icon>
             Go Back
