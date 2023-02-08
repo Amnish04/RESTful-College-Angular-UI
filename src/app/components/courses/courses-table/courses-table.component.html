@@ -14,7 +14,7 @@
         <table class="table table-auto border-separate border border-slate-400 mx-5 bg-white">
             <thead>
                 <tr>
-                    <th [attr.role]="column.sortable ? 'button' : 'presentation'" [tabindex]="column.sortable ? 0 : -1" [attr.aria-label]="column.sortable ? 'Interact to sort the rows by this field' : null" 
+                    <th [attr.role]="column.sortable ? 'button' : 'presentation'" [tabindex]="column.sortable ? 0 : -1" [attr.aria-label]="column.sortable ? 'Interact to sort the rows by ' + column.title : null" 
                     appClickOnKey appSoundOnClick *ngFor="let column of colDefs"
                     [ngClass]="{'cursor-zoom-in': column.sortable && (column.sorted === 'dsc' || column.sorted === null), 'cursor-zoom-out': column.sortable && column.sorted === 'asc'}" 
                     (click)="sortColumnByField(column.field)" matTooltip="Sort by {{column.title}}" matTooltipTouchGestures="on"
@@ -25,7 +25,7 @@
             </thead>
             <ng-container *ngIf="courses">
                 <tbody>
-                    <tr [routerLink]="[course.courseId]" [queryParams]="{mode: 'edit'}" appClickOnKey appSoundOnClick
+                    <tr [routerLink]="[course.courseId]" [queryParams]="{mode: 'edit'}" appClickOnKey appSoundOnClick [attr.aria-label]="'Click to open ' + course.courseDescription + ' details'"
                         *ngFor="let course of displayedCourses" matTooltip="View {{course.courseCode}}" matTooltipTouchGestures="auto"
                         class="cursor-pointer focus:bg-slate-100 hover:bg-slate-100 active:bg-slate-200 outline-none" >
                         <td *ngFor="let field of getObjectValues(formatCourseData(course))" class="border border-slate-300 p-3 text-center">{{field}}</td>
