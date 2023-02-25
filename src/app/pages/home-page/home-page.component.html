@@ -9,17 +9,24 @@
             mat-fab mat-stroked-button color="primary"
             (click)="openCreditsDetails(credits)"
             >
-                Credits
+                <mat-icon>copyright</mat-icon>
+                
             </button>
         </div>
 
         <div id="buttonContainer" class="flex flex-wrap justify-center gap-40 my-5 antialiased">
             <a appSoundOnClick id="homePageLeftButton" #leftButton (mouseover)="onLeftButtonHover()" (focus)="onLeftButtonHover()" 
             style="padding: 0.5em; font-size: 1.25em; transition: 200ms ease-in-out;" 
-            mat-raised-button color="primary" routerLink="/students">Students</a>
+            mat-raised-button color="primary" routerLink="/students">
+                <mat-icon>person</mat-icon>
+                Students
+            </a>
             <a appSoundOnClick id="homePageRightButton" #rightButton (mouseover)="onRightButtonHover()" (focus)="onRightButtonHover()" 
             style="padding: 0.5em; font-size: 1.25em; transition: 200ms ease-in-out;" 
-            mat-raised-button color="primary" routerLink="/courses">Courses</a>
+            mat-raised-button color="primary" routerLink="/courses">
+                <mat-icon>library_books</mat-icon>
+                Courses
+            </a>
         </div>
     </div>
 </div>
