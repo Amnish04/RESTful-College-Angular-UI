@@ -6,17 +6,61 @@ import { ErrorPageComponent } from './../pages/error-page/error-page.component';
 import { HomePageComponent } from './../pages/home-page/home-page.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { canActivateGuard } from '../services/authentication/auth.guard';
 
 const routes: Routes = [
-    { path: 'students', component: StudentPageComponent, title: "Data Management - Students Page" },
-    { path: 'students/:id', component: StudentAddEditComponent },
-    { path: 'students/add-new', component: StudentAddEditComponent },
-    { path: 'courses', component: CoursesPageComponent, title: "Data Management - Courses Page" },
-    { path: 'courses/:id', component: CourseAddEditComponent },
-    { path: 'courses/add-new', component: CourseAddEditComponent },
-    { path: 'home', component: HomePageComponent, title: "Data Management", pathMatch: 'full' },
-    { path: '', redirectTo: '/home', pathMatch: 'full' },
-    { path: '**', component: ErrorPageComponent}
+    { 
+        path: 'students', 
+        title: "Data Management - Students Page",
+        children: [
+            { 
+                path: '', 
+                component: StudentPageComponent
+            },
+            { 
+                path: ':id', 
+                component: StudentAddEditComponent
+            },
+            { 
+                path: 'add-new',
+                component: StudentAddEditComponent 
+            }
+        ],
+        canActivate: [canActivateGuard]
+    },
+    { 
+        path: 'courses', 
+        title: "Data Management - Courses Page" ,
+        children: [
+            { 
+                path: '', 
+                component: CoursesPageComponent 
+            },
+            { 
+                path: ':id', 
+                component: CourseAddEditComponent 
+            },
+            { 
+                path: 'add-new', 
+                component: CourseAddEditComponent 
+            },
+        ],
+        canActivate: [canActivateGuard]
+    },
+    { 
+        path: 'home', 
+        component: HomePageComponent, 
+        title: "Data Management", 
+    },
+    { 
+        path: '', 
+        redirectTo: '/home', 
+        pathMatch: 'full' 
+    },
+    { 
+        path: '**', 
+        component: ErrorPageComponent
+    }
 ];
 
 @NgModule({
