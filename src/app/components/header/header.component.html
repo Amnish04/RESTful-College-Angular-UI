@@ -1,6 +1,6 @@
 <nav class="nav-header">
-    <ul class="nav-links">
-        <ul class="nav-links">
+    <ul class="nav-links md-space-between">
+        <ul id="home-button" class="nav-links">
             <li>
                 <a appSoundOnClick routerLink="/" routerLinkActive="active-link" 
                 [routerLinkActiveOptions]="{ exact: true }" matTooltip="Home Page" matTooltipTouchGestures="auto"
@@ -15,6 +15,14 @@
             </li>
             <li>
                 <a appSoundOnClick class="nav-link" routerLink="/courses" routerLinkActive="active-link">Courses</a>
+            </li>
+        </ul>
+        <ul id="logout-button" class="nav-links hidden md:block">
+            <li>
+                <button appSoundOnClick matTooltip="Logout" matTooltipTouchGestures="auto"
+                mat-fab color="primary" aria-label="Go to sign in page" (click)="logout()">
+                    <mat-icon>logout</mat-icon>
+                </button>
             </li>
         </ul>
     </ul>

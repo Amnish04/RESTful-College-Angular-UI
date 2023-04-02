@@ -1,22 +1,17 @@
 import { LoadingService } from './../../services/loading/loading.service';
 import { Router } from '@angular/router';
 import { AuthService } from './../../services/authentication/auth.service';
-import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  selector: 'app-auth-page',
+  templateUrl: './auth-page.component.html',
+  styleUrls: ['./auth-page.component.css']
 })
-export class HeaderComponent implements OnInit {
-
-    get currentPath(): string {
-        return this.location.path();
-    }
+export class AuthPageComponent implements OnInit {
+    loginFailed: boolean = false;
 
     constructor(
-        private location: Location,
         private authService: AuthService,
         private router: Router,
         private loadingService: LoadingService
@@ -25,14 +20,19 @@ export class HeaderComponent implements OnInit {
     ngOnInit(): void {
     }
 
-    logout() {
+    login() {
         this.loadingService.loading = true;
-
-        setTimeout(() => {
-            this.authService.logout();
+        this.authService.login()
+        .subscribe(res => {
             this.loadingService.loading = false;
-            this.router.navigate(['authenticate']);
-        }, 1000);
+            if (res) {
+                console.log("Here")
+                this.router.navigate(['home']);
+            }
+            else {
+                this.loginFailed = true;
+            }
+        });
     }
 
 }

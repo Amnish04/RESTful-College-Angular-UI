@@ -1,3 +1,4 @@
+import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
 import { inject } from '@angular/core';
 /**
@@ -5,6 +6,7 @@ import { inject } from '@angular/core';
  */
 export const canActivateGuard = () => {
     const router = inject(Router);
+    const authService = inject(AuthService);
 
-    return true;
+    return authService.isLoggedIn ? true : router.parseUrl('authenticate');
 }

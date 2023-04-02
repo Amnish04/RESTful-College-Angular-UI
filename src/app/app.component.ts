@@ -8,8 +8,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+    noHeaderUrls = ['/', '/home', '/authenticate']; // Urls where header should not be shown
     get isHome() {
-        return this.router.url === '/' || this.router.url === '/home';
+        return this.noHeaderUrls.includes(this.router.url);
     }
 
     constructor(

@@ -53,4 +53,15 @@ a.active-link:hover {
     .nav-links {
         gap: 2rem;
     }
+
+    #home-button, #logout-button {
+        order: -1;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    .md-space-between {
+        justify-content: space-between;
+        margin-inline: 2rem;
+    }
 }
