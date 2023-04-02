@@ -14,7 +14,8 @@ const routes: Routes = [
     { path: 'courses', component: CoursesPageComponent, title: "Data Management - Courses Page" },
     { path: 'courses/:id', component: CourseAddEditComponent },
     { path: 'courses/add-new', component: CourseAddEditComponent },
-    { path: '', component: HomePageComponent, title: "Data Management" },
+    { path: 'home', component: HomePageComponent, title: "Data Management", pathMatch: 'full' },
+    { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: '**', component: ErrorPageComponent}
 ];
 
