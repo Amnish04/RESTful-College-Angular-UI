@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class AppComponent implements OnInit {
     get isHome() {
-        return this.router.url === '/';
+        return this.router.url === '/' || this.router.url === '/home';
     }
 
     constructor(
