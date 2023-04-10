@@ -21,3 +21,9 @@ export enum ButtonSounds {
     Sound2 = 'sound2',
     Sound3 = 'sound3',
 }
+
+export enum ResponseStatuses {
+    Success = 'Success',
+    Failure = 'Fail',
+    Profanity = 'Profanity Detected',
+}

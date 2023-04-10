@@ -1,5 +1,4 @@
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { StudentService } from './../../services/students/student-service.service';
 import { Component, OnInit, ViewChild, ElementRef, Renderer2 } from '@angular/core';
 
 @Component({
@@ -37,7 +36,7 @@ export class HomePageComponent implements OnInit {
     openCreditsDetails(message: string) {
         this.snackBar.open(message, 'Understood', {
             duration: 1000 * 5,
-            panelClass: ['mat-toolbar', 'mat-primary']
+            panelClass: ['mat-toolbar', 'mat-primary'],
         });
     }
 }
