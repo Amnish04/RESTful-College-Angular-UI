@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiDomain: 'https://api-restful-college.cyclic.app'
+  apiDomain: 'https://api-restful-college.onrender.com'
 };
 
 /*
