@@ -16,9 +16,10 @@ export class LoadingService {
         if (loading && !this.loadingInterval) {
             this.loadingInterval = setInterval(() => {
                 ++this.waitTime;
+                console.log(this.waitTime);
             }, 1000 * 1);
         }
-        else {
+        else if (!loading) {
             clearInterval(this.loadingInterval);
             this.loadingInterval = null;
             this.waitTime = 0;
@@ -30,6 +31,6 @@ export class LoadingService {
     }
 
     get showTooltip() {
-        return this.waitTime > 2;
+        return this.waitTime >= 2;
     }
 }

@@ -1,8 +1,12 @@
 .app-spinner {
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.25rem;
+    height: 100%;
+
+    font-weight: bold;
     z-index: 10000;
 }
 
