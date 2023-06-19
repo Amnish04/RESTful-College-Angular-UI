@@ -3,5 +3,6 @@
 }
 
 .add-class {
-    background-color: #badcff;
+    --added-content-color: #badcff; 
+    background-color: var(--added-content-color);
 }
