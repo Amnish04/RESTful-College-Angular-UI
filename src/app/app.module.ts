@@ -39,7 +39,8 @@ import { MatRippleModule } from '@angular/material/core';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatTooltipModule} from '@angular/material/tooltip';
-import { ExtractFirstWordPipe } from './pipes/extract-first-word.pipe'; 
+import { ExtractFirstWordPipe } from './pipes/extract-first-word.pipe';
+import { ChangedTextRendererComponent } from './components/shared/changed-text-renderer/changed-text-renderer.component'; 
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { ExtractFirstWordPipe } from './pipes/extract-first-word.pipe';
     SoundOnClickDirective,
     SettingsComponent,
     ExtractFirstWordPipe,
+    ChangedTextRendererComponent,
   ],
   imports: [
     BrowserModule,

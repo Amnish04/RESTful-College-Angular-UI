@@ -1,0 +1,21 @@
+<ng-container [ngSwitch]="indicationMode">
+    <ng-container *ngSwitchCase="TextChangeIndicationMode.Normal">
+        <ng-container *ngFor="let words of normalIndicationContent; let i = index">
+            <span [class]="words.class" [attr.aria-label]="words.ariaLabel">{{words.text}}</span><ng-container *ngIf="i < normalIndicationContent.length - 1">
+                <span *ngIf="wordSeparator === ' ' else defaultWordSeparator">&nbsp;</span><ng-template #defaultWordSeparator>{{wordSeparator}}</ng-template>
+            </ng-container>
+        </ng-container>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="TextChangeIndicationMode.ReplaceWords">
+        <span *ngFor="let words of replaceWordsContent; let i = index" [class]="words.class" [attr.aria-label]="words.ariaLabel">{{words.text}}{{i < replaceWordsContent.length - 1 ? wordSeparator : ""}}
+        </span>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="TextChangeIndicationMode.ReplaceAll">
+        <span [attr.aria-label]="oldText + ' was replaced with ' + newText + (changeMaker ? ' by ' + changeMaker : '') + '.'">
+            <span class="line-through">{{oldText}}</span>&nbsp;
+            <span class="add-class">{{newText}}</span>
+        </span>
+    </ng-container>
+</ng-container>

@@ -1,3 +1,4 @@
+import { TextChangeIndicationMode } from './../../components/shared/changed-text-renderer/changed-text-renderer.component';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,6 +9,8 @@ import { Component, OnInit } from '@angular/core';
 export class ErrorPageComponent implements OnInit {
 
   constructor() { }
+
+  TextChangeIndicationMode = TextChangeIndicationMode;
 
   ngOnInit(): void {
   }
